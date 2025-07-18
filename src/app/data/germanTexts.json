@@ -1,0 +1,62 @@
+{
+  "beginner": [
+    {
+      "text": "Ich bin müde heute",
+      "translation": "I am tired today",
+      "pattern": "Subject + Verb + Adjective + Time",
+      "explanation": "Basic sentence structure: Ich (I) + bin (am) + müde (tired) + heute (today)"
+    },
+    {
+      "text": "Das Haus ist groß",
+      "translation": "The house is big", 
+      "pattern": "Article + Noun + Verb + Adjective",
+      "explanation": "Der/Die/Das + Noun + ist/sind + Adjective is a fundamental German pattern"
+    },
+    {
+      "text": "Ich trinke Kaffee am Morgen",
+      "translation": "I drink coffee in the morning",
+      "pattern": "Subject + Verb + Object + Time phrase",
+      "explanation": "Notice 'am Morgen' (in the morning) - German uses 'am' with time periods"
+    },
+    {
+      "text": "Die Katze schläft auf dem Sofa",
+      "translation": "The cat sleeps on the sofa",
+      "pattern": "Article + Noun + Verb + Preposition + Dative",
+      "explanation": "auf + dem (dative) - prepositions change the case of nouns in German"
+    }
+  ],
+  "intermediate": [
+    {
+      "text": "Ich habe gestern ein Buch gelesen",
+      "translation": "I read a book yesterday",
+      "pattern": "Perfect tense: haben/sein + past participle",
+      "explanation": "German perfect tense: habe (helper) + gelesen (past participle) at the end"
+    },
+    {
+      "text": "Weil es regnet, bleibe ich zu Hause",
+      "translation": "Because it's raining, I stay at home",
+      "pattern": "Subordinate clause + main clause",
+      "explanation": "'Weil' sends the verb to the end. Notice comma before main clause."
+    },
+    {
+      "text": "Der Mann, den ich gesehen habe, ist mein Lehrer",
+      "translation": "The man whom I saw is my teacher",
+      "pattern": "Relative clause with accusative",
+      "explanation": "'den' is accusative because the man is the object of 'gesehen habe'"
+    }
+  ],
+  "advanced": [
+    {
+      "text": "Hätte ich mehr Zeit gehabt, wäre ich nach Deutschland gefahren",
+      "translation": "If I had had more time, I would have gone to Germany",
+      "pattern": "Subjunctive II - unreal conditional",
+      "explanation": "Hätte + past participle, wäre + past participle - expressing unreal past situations"
+    },
+    {
+      "text": "Nachdem er das Studium abgeschlossen hatte, begann er zu arbeiten",
+      "translation": "After he had finished his studies, he began to work",
+      "pattern": "Plusquamperfekt + simple past",
+      "explanation": "'Nachdem' with plusquamperfekt (had + past participle) for completed past actions"
+    }
+  ]
+} 

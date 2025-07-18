@@ -1,0 +1,97 @@
+{
+  "beginner": [
+    {
+      "keyWords": ["Hund", "rennen", "Park"],
+      "possibleAnswers": [
+        "Der Hund rennt im Park",
+        "Ein Hund rennt im Park", 
+        "Mein Hund rennt im Park",
+        "Der kleine Hund rennt im Park"
+      ],
+      "hints": [
+        "Use 'der/ein/mein' before Hund",
+        "Park needs 'im' (in + dem)",
+        "Verb comes second in German"
+      ],
+      "pattern": "Article + Noun + Verb + Preposition + Location",
+      "explanation": "Basic sentence with movement. 'im Park' = 'in the park' (dative case)"
+    },
+    {
+      "keyWords": ["ich", "Buch", "lesen"],
+      "possibleAnswers": [
+        "Ich lese ein Buch",
+        "Ich lese das Buch",
+        "Ich lese mein Buch"
+      ],
+      "hints": [
+        "Subject comes first",
+        "Add article before Buch",
+        "Present tense: ich lese"
+      ],
+      "pattern": "Subject + Verb + Article + Object",
+      "explanation": "Simple present tense. Remember: ich lese (I read), not 'ich lesen'"
+    },
+    {
+      "keyWords": ["Katze", "schlafen", "Sofa"],
+      "possibleAnswers": [
+        "Die Katze schläft auf dem Sofa",
+        "Meine Katze schläft auf dem Sofa",
+        "Eine Katze schläft auf dem Sofa"
+      ],
+      "hints": [
+        "Use 'die/meine/eine' with Katze",
+        "'auf dem' = on the (dative)",
+        "3rd person: sie schläft"
+      ],
+      "pattern": "Article + Noun + Verb + Preposition + Location",
+      "explanation": "'auf + dative' for 'on'. Katze is feminine, so 'die Katze schläft'"
+    }
+  ],
+  "intermediate": [
+    {
+      "keyWords": ["gestern", "Film", "sehen"],
+      "possibleAnswers": [
+        "Gestern habe ich einen Film gesehen",
+        "Ich habe gestern einen Film gesehen",
+        "Gestern haben wir einen Film gesehen"
+      ],
+      "hints": [
+        "Use perfect tense (haben + past participle)",
+        "Past participle: gesehen",
+        "'einen' = accusative masculine"
+      ],
+      "pattern": "Time + Auxiliary + Subject + Object + Past Participle",
+      "explanation": "German perfect tense. Past participle goes to the end of the sentence"
+    },
+    {
+      "keyWords": ["weil", "müde", "schlafen"],
+      "possibleAnswers": [
+        "Weil ich müde bin, gehe ich schlafen",
+        "Ich gehe schlafen, weil ich müde bin"
+      ],
+      "hints": [
+        "'weil' sends verb to end of clause",
+        "Main clause: normal word order",
+        "Add comma between clauses"
+      ],
+      "pattern": "Subordinate clause + main clause OR main + subordinate",
+      "explanation": "Subordinating conjunctions like 'weil' change word order - verb goes to the end"
+    }
+  ],
+  "advanced": [
+    {
+      "keyWords": ["hätte", "Zeit", "reisen"],
+      "possibleAnswers": [
+        "Hätte ich mehr Zeit, würde ich viel reisen",
+        "Wenn ich mehr Zeit hätte, würde ich reisen"
+      ],
+      "hints": [
+        "Subjunctive II for hypothetical situations",
+        "hätte = would have",
+        "würde + infinitive = would do"
+      ],
+      "pattern": "Subjunctive condition + subjunctive result",
+      "explanation": "Subjunctive II expresses hypothetical or unreal situations"
+    }
+  ]
+} 
