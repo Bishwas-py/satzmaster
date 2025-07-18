@@ -56,16 +56,17 @@ export const GermanWordGame = () => {
   const checkSentenceBuilder = (input: string) => {
     if (!currentChallenge) return false;
     
-    const normalizedInput = input.trim().toLowerCase();
-    const hasAllKeyWords = currentChallenge.keyWords.every(word => 
-      normalizedInput.includes(word.toLowerCase())
-    );
+    // Normalize input: trim, lowercase, and normalize spaces
+    const normalizedInput = input.trim().toLowerCase().replace(/\s+/g, ' ');
     
-    if (!hasAllKeyWords) return false;
+    // Instead of checking for exact key words, just check against possible answers
+    // This is better because German words have different forms (rennen -> rennt)
+    const isExactMatch = currentChallenge.possibleAnswers.some(answer => {
+      const normalizedAnswer = answer.toLowerCase().trim().replace(/\s+/g, ' ');
+      return normalizedInput === normalizedAnswer;
+    });
     
-    return currentChallenge.possibleAnswers.some(answer => 
-      normalizedInput === answer.toLowerCase()
-    );
+    return isExactMatch;
   };
 
   const handleInputChange = (value: string) => {
@@ -119,7 +120,8 @@ export const GermanWordGame = () => {
           setIsFinished(false);
           setIsCorrect(null);
           setShowHints(false);
-          inputRef.current?.focus();
+          // Auto-focus the input for the next challenge
+          setTimeout(() => inputRef.current?.focus(), 100);
         } else {
           setGameState('result');
         }
