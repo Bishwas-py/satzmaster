@@ -320,7 +320,14 @@ export const GermanWordGame = () => {
     }
     if (e.key === 'Enter' && gameMode === 'builder') {
       e.preventDefault();
-      handleBuilderSubmit();
+      if (isCorrect === false) {
+        // Allow retry - reset the error state and clear input
+        setIsCorrect(null);
+        setUserInput('');
+        inputRef.current?.focus();
+      } else {
+        handleBuilderSubmit();
+      }
     }
     if (e.ctrlKey && e.key === 'r') {
       e.preventDefault();
@@ -677,7 +684,10 @@ export const GermanWordGame = () => {
 
             {gameMode === 'builder' && isCorrect === false && (
               <div className="absolute inset-0 bg-red-50 border-2 border-red-400 rounded flex items-center justify-center">
-                <span className="text-red-700 font-bold">Try again! Check word order and articles</span>
+                <div className="text-center">
+                  <div className="text-red-700 font-bold mb-2">Try again! Check word order and articles</div>
+                  <div className="text-red-600 text-sm">Press Enter to retry</div>
+                </div>
               </div>
             )}
           </div>
@@ -686,10 +696,19 @@ export const GermanWordGame = () => {
           {gameMode === 'builder' && !isFinished && (
             <div className="mt-4">
               <button
-                onClick={handleBuilderSubmit}
+                onClick={() => {
+                  if (isCorrect === false) {
+                    // Allow retry
+                    setIsCorrect(null);
+                    setUserInput('');
+                    inputRef.current?.focus();
+                  } else {
+                    handleBuilderSubmit();
+                  }
+                }}
                 className="bg-gray-900 text-white px-6 py-2 rounded hover:bg-gray-800 transition-colors"
               >
-                Check Sentence (Enter)
+                {isCorrect === false ? 'Try Again (Enter)' : 'Check Sentence (Enter)'}
               </button>
             </div>
           )}
