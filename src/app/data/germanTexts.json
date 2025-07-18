@@ -1,62 +1,440 @@
 {
-  "beginner": [
-    {
-      "text": "Ich bin müde heute",
-      "translation": "I am tired today",
-      "pattern": "Subject + Verb + Adjective + Time",
-      "explanation": "Basic sentence structure: Ich (I) + bin (am) + müde (tired) + heute (today)"
-    },
-    {
-      "text": "Das Haus ist groß",
-      "translation": "The house is big", 
-      "pattern": "Article + Noun + Verb + Adjective",
-      "explanation": "Der/Die/Das + Noun + ist/sind + Adjective is a fundamental German pattern"
-    },
-    {
-      "text": "Ich trinke Kaffee am Morgen",
-      "translation": "I drink coffee in the morning",
-      "pattern": "Subject + Verb + Object + Time phrase",
-      "explanation": "Notice 'am Morgen' (in the morning) - German uses 'am' with time periods"
-    },
-    {
-      "text": "Die Katze schläft auf dem Sofa",
-      "translation": "The cat sleeps on the sofa",
-      "pattern": "Article + Noun + Verb + Preposition + Dative",
-      "explanation": "auf + dem (dative) - prepositions change the case of nouns in German"
-    }
-  ],
-  "intermediate": [
-    {
-      "text": "Ich habe gestern ein Buch gelesen",
-      "translation": "I read a book yesterday",
-      "pattern": "Perfect tense: haben/sein + past participle",
-      "explanation": "German perfect tense: habe (helper) + gelesen (past participle) at the end"
-    },
-    {
-      "text": "Weil es regnet, bleibe ich zu Hause",
-      "translation": "Because it's raining, I stay at home",
-      "pattern": "Subordinate clause + main clause",
-      "explanation": "'Weil' sends the verb to the end. Notice comma before main clause."
-    },
-    {
-      "text": "Der Mann, den ich gesehen habe, ist mein Lehrer",
-      "translation": "The man whom I saw is my teacher",
-      "pattern": "Relative clause with accusative",
-      "explanation": "'den' is accusative because the man is the object of 'gesehen habe'"
-    }
-  ],
-  "advanced": [
-    {
-      "text": "Hätte ich mehr Zeit gehabt, wäre ich nach Deutschland gefahren",
-      "translation": "If I had had more time, I would have gone to Germany",
-      "pattern": "Subjunctive II - unreal conditional",
-      "explanation": "Hätte + past participle, wäre + past participle - expressing unreal past situations"
-    },
-    {
-      "text": "Nachdem er das Studium abgeschlossen hatte, begann er zu arbeiten",
-      "translation": "After he had finished his studies, he began to work",
-      "pattern": "Plusquamperfekt + simple past",
-      "explanation": "'Nachdem' with plusquamperfekt (had + past participle) for completed past actions"
-    }
-  ]
-} 
+    "beginner": [
+      {
+        "text": "Ich bin müde heute",
+        "translation": "I am tired today",
+        "pattern": "Subject + Verb + Adjective + Time",
+        "explanation": "Basic sentence structure: Ich (I) + bin (am) + müde (tired) + heute (today)"
+      },
+      {
+        "text": "Das Haus ist groß",
+        "translation": "The house is big",
+        "pattern": "Article + Noun + Verb + Adjective",
+        "explanation": "Der/Die/Das + Noun + ist/sind + Adjective is a fundamental German pattern"
+      },
+      {
+        "text": "Ich trinke Kaffee am Morgen",
+        "translation": "I drink coffee in the morning",
+        "pattern": "Subject + Verb + Object + Time phrase",
+        "explanation": "Notice 'am Morgen' (in the morning) - German uses 'am' with time periods"
+      },
+      {
+        "text": "Die Katze schläft auf dem Sofa",
+        "translation": "The cat sleeps on the sofa",
+        "pattern": "Article + Noun + Verb + Preposition + Dative",
+        "explanation": "auf + dem (dative) - prepositions change the case of nouns in German"
+      },
+      {
+        "text": "Mein Vater arbeitet im Büro",
+        "translation": "My father works in the office",
+        "pattern": "Possessive + Noun + Verb + Preposition + Location",
+        "explanation": "'im' = in + dem (dative). Büro is neuter, so 'das Büro' becomes 'im Büro'"
+      },
+      {
+        "text": "Wir essen um zwölf Uhr",
+        "translation": "We eat at twelve o'clock",
+        "pattern": "Subject + Verb + Time expression",
+        "explanation": "'um' is used for specific times. 'zwölf Uhr' = twelve o'clock"
+      },
+      {
+        "text": "Die Blumen sind sehr schön",
+        "translation": "The flowers are very beautiful",
+        "pattern": "Article + Noun + Verb + Adverb + Adjective",
+        "explanation": "Plural: 'die Blumen sind' (the flowers are). 'sehr' intensifies the adjective"
+      },
+      {
+        "text": "Ich kaufe Brot beim Bäcker",
+        "translation": "I buy bread at the baker's",
+        "pattern": "Subject + Verb + Object + Preposition + Dative",
+        "explanation": "'beim' = bei + dem (at the). Bäcker is masculine, so 'der Bäcker' becomes 'beim Bäcker'"
+      },
+      {
+        "text": "Das Wetter ist heute kalt",
+        "translation": "The weather is cold today",
+        "pattern": "Article + Noun + Verb + Time + Adjective",
+        "explanation": "Weather expressions: 'das Wetter ist' + adjective describes weather conditions"
+      },
+      {
+        "text": "Meine Schwester hat blaue Augen",
+        "translation": "My sister has blue eyes",
+        "pattern": "Possessive + Noun + Verb + Adjective + Noun",
+        "explanation": "'haben' for possessing physical characteristics. Adjective 'blaue' agrees with plural 'Augen'"
+      },
+      {
+        "text": "Der Hund läuft schnell",
+        "translation": "The dog runs quickly",
+        "pattern": "Article + Noun + Verb + Adverb",
+        "explanation": "Adverbs in German don't change form. 'schnell' describes how the dog runs"
+      },
+      {
+        "text": "Ich gehe in die Schule",
+        "translation": "I go to school",
+        "pattern": "Subject + Verb + Preposition + Accusative",
+        "explanation": "'in die' shows movement toward (accusative). Schule is feminine: die Schule"
+      },
+      {
+        "text": "Es regnet seit gestern",
+        "translation": "It has been raining since yesterday",
+        "pattern": "Impersonal subject + Verb + Preposition + Time",
+        "explanation": "'seit' (since) with dative for duration. Present tense for ongoing action"
+      },
+      {
+        "text": "Der Apfel schmeckt süß",
+        "translation": "The apple tastes sweet",
+        "pattern": "Article + Noun + Verb + Adjective",
+        "explanation": "'schmecken' (to taste) is used for describing flavors. Apfel is masculine"
+      },
+      {
+        "text": "Wir haben einen großen Garten",
+        "translation": "We have a big garden",
+        "pattern": "Subject + Verb + Article + Adjective + Noun",
+        "explanation": "Accusative: 'einen großen Garten'. Adjective endings change with case and article"
+      },
+      {
+        "text": "Die Sonne scheint hell",
+        "translation": "The sun shines brightly",
+        "pattern": "Article + Noun + Verb + Adverb",
+        "explanation": "Weather verb 'scheinen' (to shine). 'hell' describes the intensity of shining"
+      },
+      {
+        "text": "Mein Auto ist rot",
+        "translation": "My car is red",
+        "pattern": "Possessive + Noun + Verb + Adjective",
+        "explanation": "Colors as adjectives: 'rot' (red). Auto is neuter: das Auto"
+      },
+      {
+        "text": "Ich wohne in Berlin",
+        "translation": "I live in Berlin",
+        "pattern": "Subject + Verb + Preposition + Location",
+        "explanation": "'wohnen' (to live/reside) + 'in' + city name. No article needed with city names"
+      },
+      {
+        "text": "Der Zug kommt um acht Uhr",
+        "translation": "The train comes at eight o'clock",
+        "pattern": "Article + Noun + Verb + Time expression",
+        "explanation": "'um' + specific time. 'acht Uhr' = eight o'clock. Zug is masculine"
+      },
+      {
+        "text": "Ich höre gern Musik",
+        "translation": "I like listening to music",
+        "pattern": "Subject + Verb + Adverb + Object",
+        "explanation": "'gern' shows preference/liking. 'Musik hören' = to listen to music"
+      },
+      {
+        "text": "Das Baby weint laut",
+        "translation": "The baby cries loudly",
+        "pattern": "Article + Noun + Verb + Adverb",
+        "explanation": "'weinen' (to cry) + 'laut' (loudly). Baby is neuter: das Baby"
+      },
+      {
+        "text": "Ich brauche eine neue Jacke",
+        "translation": "I need a new jacket",
+        "pattern": "Subject + Verb + Article + Adjective + Noun",
+        "explanation": "'brauchen' (to need) + accusative. 'eine neue Jacke' - feminine accusative"
+      },
+      {
+        "text": "Der Lehrer erklärt die Aufgabe",
+        "translation": "The teacher explains the task",
+        "pattern": "Article + Noun + Verb + Article + Object",
+        "explanation": "'erklären' (to explain) + accusative object. 'die Aufgabe' (the task) is feminine"
+      },
+      {
+        "text": "Wir fahren mit dem Bus",
+        "translation": "We go by bus",
+        "pattern": "Subject + Verb + Preposition + Dative",
+        "explanation": "'mit' (with/by) + dative. 'dem Bus' - Bus is masculine, so 'der Bus' becomes 'dem Bus'"
+      }
+    ],
+    "intermediate": [
+      {
+        "text": "Ich habe gestern ein Buch gelesen",
+        "translation": "I read a book yesterday",
+        "pattern": "Perfect tense: haben/sein + past participle",
+        "explanation": "German perfect tense: habe (helper) + gelesen (past participle) at the end"
+      },
+      {
+        "text": "Weil es regnet, bleibe ich zu Hause",
+        "translation": "Because it's raining, I stay at home",
+        "pattern": "Subordinate clause + main clause",
+        "explanation": "'Weil' sends the verb to the end. Notice comma before main clause."
+      },
+      {
+        "text": "Der Mann, den ich gesehen habe, ist mein Lehrer",
+        "translation": "The man whom I saw is my teacher",
+        "pattern": "Relative clause with accusative",
+        "explanation": "'den' is accusative because the man is the object of 'gesehen habe'"
+      },
+      {
+        "text": "Nachdem ich gefrühstückt hatte, bin ich zur Arbeit gefahren",
+        "translation": "After I had breakfast, I went to work",
+        "pattern": "Nachdem + past perfect, perfect tense",
+        "explanation": "'Nachdem' requires past perfect (hatte + past participle) for the first action"
+      },
+      {
+        "text": "Ich würde gern nach Italien reisen",
+        "translation": "I would like to travel to Italy",
+        "pattern": "Subjunctive II + infinitive",
+        "explanation": "'würde' + infinitive expresses polite wishes or hypothetical situations"
+      },
+      {
+        "text": "Obwohl es kalt war, sind wir spazieren gegangen",
+        "translation": "Although it was cold, we went for a walk",
+        "pattern": "Concessive clause + main clause",
+        "explanation": "'Obwohl' introduces contrast. Verb goes to end in subordinate clause"
+      },
+      {
+        "text": "Das ist der Freund, mit dem ich studiere",
+        "translation": "That's the friend with whom I study",
+        "pattern": "Relative clause with dative",
+        "explanation": "'mit' requires dative, so 'der Freund' becomes 'dem' in the relative clause"
+      },
+      {
+        "text": "Wenn ich Zeit hätte, würde ich mehr lesen",
+        "translation": "If I had time, I would read more",
+        "pattern": "Conditional with Subjunctive II",
+        "explanation": "'hätte' (would have) + 'würde' (would) - hypothetical condition and result"
+      },
+      {
+        "text": "Bevor wir ausgehen, muss ich mich noch umziehen",
+        "translation": "Before we go out, I still have to change clothes",
+        "pattern": "Temporal clause + modal verb",
+        "explanation": "'Bevor' + subordinate clause. 'sich umziehen' is reflexive (to change clothes)"
+      },
+      {
+        "text": "Je mehr ich lerne, desto besser verstehe ich Deutsch",
+        "translation": "The more I learn, the better I understand German",
+        "pattern": "Je + comparative, desto + comparative",
+        "explanation": "Parallel comparative construction: 'je mehr...desto besser' (the more...the better)"
+      },
+      {
+        "text": "Ich bin davon überzeugt, dass er recht hat",
+        "translation": "I am convinced that he is right",
+        "pattern": "Main clause + dass-clause",
+        "explanation": "'davon überzeugt sein' + 'dass' introduces the content of conviction"
+      },
+      {
+        "text": "Während ich arbeitete, hörte ich Musik",
+        "translation": "While I was working, I listened to music",
+        "pattern": "Temporal clause + main clause",
+        "explanation": "'Während' can use simple past. Shows simultaneous actions"
+      },
+      {
+        "text": "Ich freue mich darauf, dich zu sehen",
+        "translation": "I'm looking forward to seeing you",
+        "pattern": "Reflexive verb + infinitive construction",
+        "explanation": "'sich freuen auf' + 'zu' + infinitive. 'darauf' anticipates the infinitive clause"
+      },
+      {
+        "text": "Statt zu studieren, hat er den ganzen Tag gespielt",
+        "translation": "Instead of studying, he played all day",
+        "pattern": "Statt + zu + infinitive",
+        "explanation": "'statt...zu' (instead of) + infinitive shows alternative action"
+      },
+      {
+        "text": "Es ist wichtig, dass wir pünktlich sind",
+        "translation": "It's important that we are punctual",
+        "pattern": "Impersonal construction + dass-clause",
+        "explanation": "'Es ist wichtig/nötig/möglich' + 'dass' for expressing necessity or possibility"
+      },
+      {
+        "text": "Ich habe vor, nächstes Jahr nach Deutschland zu fahren",
+        "translation": "I plan to go to Germany next year",
+        "pattern": "Verb + infinitive with zu",
+        "explanation": "'vorhaben' (to plan) + 'zu' + infinitive. 'zu' goes before the infinitive"
+      },
+      {
+        "text": "Seit ich hier wohne, fühle ich mich wohl",
+        "translation": "Since I've been living here, I feel comfortable",
+        "pattern": "Temporal clause + reflexive verb",
+        "explanation": "'seit' + present tense for ongoing situations. 'sich wohl fühlen' = to feel comfortable"
+      },
+      {
+        "text": "Das Buch, das du mir empfohlen hast, ist sehr interessant",
+        "translation": "The book that you recommended to me is very interesting",
+        "pattern": "Relative clause with dative object",
+        "explanation": "'empfehlen' takes dative object (mir). 'das' refers back to 'das Buch'"
+      },
+      {
+        "text": "Ich weiß nicht, ob er heute kommt",
+        "translation": "I don't know whether he's coming today",
+        "pattern": "Main clause + indirect question",
+        "explanation": "'ob' introduces indirect yes/no questions. Verb goes to end in subordinate clause"
+      },
+      {
+        "text": "Sobald ich fertig bin, rufe ich dich an",
+        "translation": "As soon as I'm finished, I'll call you",
+        "pattern": "Temporal clause + separable verb",
+        "explanation": "'sobald' (as soon as) + subordinate clause. 'anrufen' is separable"
+      },
+      {
+        "text": "Es tut mir leid, dass ich zu spät gekommen bin",
+        "translation": "I'm sorry that I came too late",
+        "pattern": "Fixed expression + dass-clause",
+        "explanation": "'es tut mir leid' (I'm sorry) + 'dass' + perfect tense for past action"
+      },
+      {
+        "text": "Ich bin müde, weil ich schlecht geschlafen habe",
+        "translation": "I'm tired because I slept badly",
+        "pattern": "Main clause + causal clause",
+        "explanation": "'weil' gives reason. Perfect tense 'geschlafen habe' for completed action"
+      },
+      {
+        "text": "Anstatt ins Kino zu gehen, blieben wir zu Hause",
+        "translation": "Instead of going to the cinema, we stayed home",
+        "pattern": "Anstatt + zu + infinitive",
+        "explanation": "'anstatt...zu' (instead of) + infinitive. More formal than 'statt...zu'"
+      },
+      {
+        "text": "Ich hoffe, dass das Wetter morgen besser wird",
+        "translation": "I hope that the weather will be better tomorrow",
+        "pattern": "Verb + dass-clause with future",
+        "explanation": "'hoffen' + 'dass' + future tense. 'wird' + adjective for future state"
+      }
+    ],
+    "advanced": [
+      {
+        "text": "Hätte ich mehr Zeit gehabt, wäre ich nach Deutschland gefahren",
+        "translation": "If I had had more time, I would have gone to Germany",
+        "pattern": "Subjunctive II - unreal conditional",
+        "explanation": "Hätte + past participle, wäre + past participle - expressing unreal past situations"
+      },
+      {
+        "text": "Nachdem er das Studium abgeschlossen hatte, begann er zu arbeiten",
+        "translation": "After he had finished his studies, he began to work",
+        "pattern": "Plusquamperfekt + simple past",
+        "explanation": "'Nachdem' with plusquamperfekt (had + past participle) for completed past actions"
+      },
+      {
+        "text": "Insofern Sie damit einverstanden sind, können wir mit dem Projekt beginnen",
+        "translation": "Insofar as you agree with this, we can begin with the project",
+        "pattern": "Formal conditional + main clause",
+        "explanation": "'Insofern' introduces a formal condition. Often used in business or academic contexts"
+      },
+      {
+        "text": "Ungeachtet der Schwierigkeiten werden wir das Ziel erreichen",
+        "translation": "Regardless of the difficulties, we will achieve the goal",
+        "pattern": "Ungeachtet + genitive + future tense",
+        "explanation": "'Ungeachtet' (regardless of) requires genitive case. Formal/written style"
+      },
+      {
+        "text": "Vorausgesetzt, dass alle zustimmen, können wir morgen anfangen",
+        "translation": "Provided that everyone agrees, we can start tomorrow",
+        "pattern": "Conditional clause + modal verb",
+        "explanation": "'Vorausgesetzt, dass' introduces a necessary condition for the main action"
+      },
+      {
+        "text": "Wäre er früher gekommen, hätte er den Vortrag noch gehört",
+        "translation": "Had he come earlier, he would have still heard the lecture",
+        "pattern": "Subjunctive II past - hypothetical past",
+        "explanation": "Both clauses use subjunctive II past: wäre + past participle, hätte + past participle"
+      },
+      {
+        "text": "Indem er täglich übte, verbesserte er seine Fähigkeiten erheblich",
+        "translation": "By practicing daily, he significantly improved his skills",
+        "pattern": "Indem + method, result clause",
+        "explanation": "'Indem' introduces the method by which something is achieved"
+      },
+      {
+        "text": "Geschweige denn, dass er sich entschuldigt hätte",
+        "translation": "Let alone that he would have apologized",
+        "pattern": "Escalating negation with subjunctive",
+        "explanation": "'Geschweige denn' escalates a negation. Often with subjunctive for hypothetical situations"
+      },
+      {
+        "text": "Zumal er über die notwendige Erfahrung verfügt, ist er der ideale Kandidat",
+        "translation": "Especially since he has the necessary experience, he is the ideal candidate",
+        "pattern": "Zumal + reason, main conclusion",
+        "explanation": "'Zumal' introduces an additional reason that strengthens the main argument"
+      },
+      {
+        "text": "Sofern keine unvorhergesehenen Umstände eintreten, wird das Projekt termingerecht abgeschlossen",
+        "translation": "Unless unforeseen circumstances occur, the project will be completed on schedule",
+        "pattern": "Sofern + condition, passive future",
+        "explanation": "'Sofern' introduces a condition, often negative. Passive: 'wird...abgeschlossen'"
+      },
+      {
+        "text": "Mittels modernster Technologie lassen sich die Probleme lösen",
+        "translation": "By means of the most modern technology, the problems can be solved",
+        "pattern": "Mittels + genitive + lassen + infinitive",
+        "explanation": "'Mittels' (by means of) + genitive. 'lassen sich' expresses possibility"
+      },
+      {
+        "text": "Abgesehen davon, dass es teuer ist, gefällt mir das Projekt",
+        "translation": "Apart from the fact that it's expensive, I like the project",
+        "pattern": "Abgesehen davon, dass + exception",
+        "explanation": "'Abgesehen davon, dass' introduces an exception to a general positive statement"
+      },
+      {
+        "text": "Wohingegen andere zögern, ergreift er sofort die Initiative",
+        "translation": "Whereas others hesitate, he immediately takes the initiative",
+        "pattern": "Wohingegen + contrast clause",
+        "explanation": "'Wohingegen' introduces a formal contrast between different behaviors or situations"
+      },
+      {
+        "text": "Dergestalt war seine Rede, dass alle Zuhörer tief beeindruckt waren",
+        "translation": "Such was his speech that all listeners were deeply impressed",
+        "pattern": "Dergestalt + consequence clause",
+        "explanation": "'Dergestalt' (in such a way) introduces a consequence. Literary/formal style"
+      },
+      {
+        "text": "Gleichwohl die Aussichten düster erscheinen, geben wir nicht auf",
+        "translation": "Nevertheless, though the prospects appear grim, we don't give up",
+        "pattern": "Gleichwohl + concessive clause",
+        "explanation": "'Gleichwohl' (nevertheless) is more formal than 'trotzdem'. Shows perseverance"
+      },
+      {
+        "text": "Sowohl die Theorie als auch die Praxis müssen berücksichtigt werden",
+        "translation": "Both theory and practice must be taken into consideration",
+        "pattern": "Sowohl...als auch + passive construction",
+        "explanation": "'Sowohl...als auch' coordinates equal elements. Passive: 'müssen...berücksichtigt werden'"
+      },
+      {
+        "text": "Umso mehr bewundere ich seinen Mut, als er große Risiken eingehen musste",
+        "translation": "All the more do I admire his courage, as he had to take great risks",
+        "pattern": "Umso mehr + intensification + causal clause",
+        "explanation": "'Umso mehr' intensifies admiration. 'als' here means 'since' in formal style"
+      },
+      {
+        "text": "Mag sein, dass er recht hat, dennoch bleibe ich bei meiner Meinung",
+        "translation": "It may be that he's right, nevertheless I stick to my opinion",
+        "pattern": "Mag sein + concessive, dennoch + main stance",
+        "explanation": "'Mag sein' (may be) concedes a possibility while maintaining one's position"
+      },
+      {
+        "text": "Unbeschadet der Tatsache, dass Fehler gemacht wurden, war das Projekt erfolgreich",
+        "translation": "Notwithstanding the fact that mistakes were made, the project was successful",
+        "pattern": "Unbeschadet + genitive + concessive clause",
+        "explanation": "'Unbeschadet' (notwithstanding) + genitive. Very formal/legal style"
+      },
+      {
+        "text": "Statt dass er sich bessert, wird sein Verhalten immer schlechter",
+        "translation": "Instead of him improving, his behavior is getting worse and worse",
+        "pattern": "Statt dass + expectation, contrasting reality",
+        "explanation": "'Statt dass' introduces an expectation that is contradicted by reality"
+      },
+      {
+        "text": "Jenem Umstand ist es zu verdanken, dass wir erfolgreich waren",
+        "translation": "It is thanks to that circumstance that we were successful",
+        "pattern": "Dative attribution + es ist zu verdanken",
+        "explanation": "'jenem Umstand...zu verdanken' attributes success to a specific circumstance. Formal style"
+      },
+      {
+        "text": "Insoweit die Bedingungen erfüllt sind, kann die Genehmigung erteilt werden",
+        "translation": "Insofar as the conditions are met, the approval can be granted",
+        "pattern": "Insoweit + conditional + passive possibility",
+        "explanation": "'Insoweit' (insofar as) introduces a limiting condition. Passive: 'kann...erteilt werden'"
+      },
+      {
+        "text": "Dessen ungeachtet, dass Widerspruch erhoben wurde, bleibt der Beschluss gültig",
+        "translation": "Notwithstanding that objection was raised, the decision remains valid",
+        "pattern": "Dessen ungeachtet + genitive clause",
+        "explanation": "'Dessen ungeachtet' (despite that) + genitive. Legal/administrative language"
+      },
+      {
+        "text": "Wenngleich die Kritik berechtigt ist, sollten wir das Projekt fortsetzen",
+        "translation": "Even though the criticism is justified, we should continue the project",
+        "pattern": "Wenngleich + concession + recommendation",
+        "explanation": "'Wenngleich' (even though) is more formal than 'obwohl'. Shows reasoned decision despite criticism"
+      }
+    ]
+  }
