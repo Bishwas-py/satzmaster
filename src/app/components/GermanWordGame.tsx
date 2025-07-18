@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { RotateCcw, Eye, EyeOff, Clock, Zap, Target, BookOpen, Lightbulb } from 'lucide-react';
+import { RotateCcw, Eye, EyeOff, Clock, Zap, Target, BookOpen, Lightbulb, Home } from 'lucide-react';
 
 // German sentences organized by patterns and difficulty
 const germanTexts = {
@@ -566,7 +566,7 @@ export const GermanWordGame = () => {
                 </span>
               </div>
             </div>
-
+            
             <div className="flex items-center space-x-3">
               <button
                 onClick={() => gameMode === 'typing' ? setShowMeaning(!showMeaning) : setShowHints(!showHints)}
@@ -581,6 +581,13 @@ export const GermanWordGame = () => {
                 title="Reset sentence"
               >
                 <RotateCcw className="w-4 h-4" />
+              </button>
+              <button
+                onClick={resetGame}
+                className="text-gray-700 hover:text-gray-900 transition-colors"
+                title="Back to menu"
+              >
+                <Home className="w-4 h-4" />
               </button>
             </div>
           </div>
