@@ -29,6 +29,63 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
     inputRef.current?.focus();
   };
 
+  // Get the best matching target answer for real-time validation
+  const getBestMatch = (input: string) => {
+    if (!input.trim()) return currentChallenge.possibleAnswers[0];
+    
+    // Find the answer that matches the most characters from the beginning
+    let bestMatch = currentChallenge.possibleAnswers[0];
+    let maxMatchLength = 0;
+    
+    for (const answer of currentChallenge.possibleAnswers) {
+      const matchLength = getMatchLength(input.toLowerCase(), answer.toLowerCase());
+      if (matchLength > maxMatchLength) {
+        maxMatchLength = matchLength;
+        bestMatch = answer;
+      }
+    }
+    
+    return bestMatch;
+  };
+
+  // Get how many characters match from the beginning
+  const getMatchLength = (input: string, target: string) => {
+    let matchLength = 0;
+    for (let i = 0; i < Math.min(input.length, target.length); i++) {
+      if (input[i] === target[i]) {
+        matchLength++;
+      } else {
+        break;
+      }
+    }
+    return matchLength;
+  };
+
+  // Render the input with real-time validation styling
+  const renderValidationDisplay = () => {
+    if (!userInput) return null;
+    
+    const bestMatch = getBestMatch(userInput);
+    const matchLength = getMatchLength(userInput.toLowerCase(), bestMatch.toLowerCase());
+    
+    return (
+      <div className="absolute inset-0 pointer-events-none font-mono text-2xl p-4 flex items-center z-5">
+        <div className="flex">
+          {/* Correct characters */}
+          <span className="text-green-700 bg-green-100 px-0.5 rounded">
+            {userInput.substring(0, matchLength)}
+          </span>
+          {/* Incorrect characters */}
+          {matchLength < userInput.length && (
+            <span className="text-red-700 bg-red-100 px-0.5 rounded">
+              {userInput.substring(matchLength)}
+            </span>
+          )}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <>
       {/* Learning Panel */}
@@ -76,8 +133,34 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
           </p>
         </div>
 
-        {/* Input Area */}
+        {/* Input Area with Real-time Validation */}
         <div className="relative">
+          {/* Show validation preview above input */}
+          {userInput && (
+            <div className="mb-2 p-2 bg-gray-50 rounded border font-mono text-lg">
+              <div className="flex flex-wrap">
+                {userInput.split('').map((char, index) => {
+                  const bestMatch = getBestMatch(userInput);
+                  const matchLength = getMatchLength(userInput.toLowerCase(), bestMatch.toLowerCase());
+                  const isCorrect = index < matchLength;
+                  
+                  return (
+                    <span
+                      key={index}
+                      className={`${
+                        isCorrect 
+                          ? 'text-green-700 bg-green-100' 
+                          : 'text-red-700 bg-red-100'
+                      } px-0.5 rounded mx-0.5`}
+                    >
+                      {char === ' ' ? '␣' : char}
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+          
           <input
             ref={inputRef}
             type="text"
@@ -91,13 +174,13 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
           />
           
           {isFinished && (
-            <div className="absolute inset-0 bg-green-50 border-2 border-green-400 rounded flex items-center justify-center">
+            <div className="absolute bottom-0 left-0 right-0 bg-green-50 border-2 border-green-400 rounded flex items-center justify-center p-4">
               <span className="text-green-700 font-bold">Perfect! ✓</span>
             </div>
           )}
           
           {isCorrect === false && (
-            <div className="absolute inset-0 bg-red-50 border-2 border-red-400 rounded flex items-center justify-center">
+            <div className="absolute bottom-0 left-0 right-0 bg-red-50 border-2 border-red-400 rounded flex items-center justify-center p-4">
               <div className="text-center">
                 <div className="text-red-700 font-bold mb-2">Try again! Check word order and articles</div>
                 <div className="text-red-600 text-sm">Press Enter to retry</div>
