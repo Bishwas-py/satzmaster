@@ -87,7 +87,7 @@ export const TypingMode: React.FC<TypingModeProps> = ({
             onChange={(e) => onInputChange(e.target.value)}
             onKeyDown={onKeyPress}
             placeholder="Start typing the German text above..."
-            className="w-full text-2xl p-4 border-2 border-gray-300 focus:border-gray-500 focus:outline-none bg-white font-mono"
+            className="w-full text-2xl p-4 border-2 border-gray-400 focus:border-gray-700 focus:outline-none bg-white font-mono text-gray-900 placeholder-gray-500 shadow-sm"
             disabled={isFinished}
             autoFocus
           />
