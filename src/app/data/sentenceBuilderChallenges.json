@@ -45,6 +45,141 @@
       ],
       "pattern": "Article + Noun + Verb + Preposition + Location",
       "explanation": "'auf + dative' for 'on'. Katze is feminine, so 'die Katze schläft'"
+    },
+    {
+      "keyWords": ["Mädchen", "spielen", "Garten"],
+      "possibleAnswers": [
+        "Das Mädchen spielt im Garten",
+        "Ein Mädchen spielt im Garten",
+        "Mein Mädchen spielt im Garten"
+      ],
+      "hints": [
+        "Mädchen is neuter (das)",
+        "Use 'im' for 'in the garden'",
+        "3rd person singular: spielt"
+      ],
+      "pattern": "Article + Noun + Verb + Preposition + Location",
+      "explanation": "Mädchen is neuter despite referring to a girl. 'im Garten' = in the garden"
+    },
+    {
+      "keyWords": ["wir", "Musik", "hören"],
+      "possibleAnswers": [
+        "Wir hören Musik",
+        "Wir hören die Musik",
+        "Wir hören schöne Musik"
+      ],
+      "hints": [
+        "No article needed for general 'music'",
+        "wir hören (we listen)",
+        "Musik is feminine but accusative"
+      ],
+      "pattern": "Subject + Verb + Object",
+      "explanation": "Simple present tense with 'wir'. Musik can be used without article for general meaning"
+    },
+    {
+      "keyWords": ["Auto", "fahren", "Straße"],
+      "possibleAnswers": [
+        "Das Auto fährt auf der Straße",
+        "Ein Auto fährt auf der Straße",
+        "Mein Auto fährt auf der Straße"
+      ],
+      "hints": [
+        "Auto is neuter (das)",
+        "'auf der Straße' = on the street",
+        "Straße is feminine, dative"
+      ],
+      "pattern": "Article + Noun + Verb + Preposition + Location",
+      "explanation": "'auf + dative' when something is on a surface. Straße is feminine"
+    },
+    {
+      "keyWords": ["Kind", "trinken", "Milch"],
+      "possibleAnswers": [
+        "Das Kind trinkt Milch",
+        "Ein Kind trinkt Milch",
+        "Mein Kind trinkt die Milch"
+      ],
+      "hints": [
+        "Kind is neuter (das)",
+        "Milch usually without article",
+        "3rd person: trinkt"
+      ],
+      "pattern": "Article + Noun + Verb + Object",
+      "explanation": "Kind is neuter. Milch (milk) often used without article in general statements"
+    },
+    {
+      "keyWords": ["Lehrer", "sprechen", "Deutsch"],
+      "possibleAnswers": [
+        "Der Lehrer spricht Deutsch",
+        "Ein Lehrer spricht Deutsch",
+        "Mein Lehrer spricht gut Deutsch"
+      ],
+      "hints": [
+        "Lehrer is masculine (der)",
+        "Languages without article",
+        "3rd person: spricht"
+      ],
+      "pattern": "Article + Noun + Verb + Language",
+      "explanation": "Language names like Deutsch don't need articles when used as objects"
+    },
+    {
+      "keyWords": ["Frau", "kaufen", "Brot"],
+      "possibleAnswers": [
+        "Die Frau kauft Brot",
+        "Eine Frau kauft das Brot",
+        "Meine Frau kauft frisches Brot"
+      ],
+      "hints": [
+        "Frau is feminine (die)",
+        "Brot can be with or without article",
+        "3rd person: kauft"
+      ],
+      "pattern": "Article + Noun + Verb + Object",
+      "explanation": "Frau is feminine. Brot (bread) can be used with or without article depending on context"
+    },
+    {
+      "keyWords": ["Student", "lernen", "Bibliothek"],
+      "possibleAnswers": [
+        "Der Student lernt in der Bibliothek",
+        "Ein Student lernt in der Bibliothek",
+        "Mein Student lernt in der Bibliothek"
+      ],
+      "hints": [
+        "Student is masculine (der)",
+        "'in der Bibliothek' = in the library",
+        "Bibliothek is feminine"
+      ],
+      "pattern": "Article + Noun + Verb + Preposition + Location",
+      "explanation": "'in + dative' for location. Bibliothek is feminine, so 'in der Bibliothek'"
+    },
+    {
+      "keyWords": ["Vogel", "fliegen", "Himmel"],
+      "possibleAnswers": [
+        "Der Vogel fliegt am Himmel",
+        "Ein Vogel fliegt am Himmel",
+        "Viele Vögel fliegen am Himmel"
+      ],
+      "hints": [
+        "Vogel is masculine (der)",
+        "'am Himmel' = in the sky",
+        "Himmel is masculine"
+      ],
+      "pattern": "Article + Noun + Verb + Preposition + Location",
+      "explanation": "'am' = 'an dem' (at the). Used idiomatically with Himmel"
+    },
+    {
+      "keyWords": ["Tisch", "stehen", "Küche"],
+      "possibleAnswers": [
+        "Der Tisch steht in der Küche",
+        "Ein Tisch steht in der Küche",
+        "Mein Tisch steht in der Küche"
+      ],
+      "hints": [
+        "Tisch is masculine (der)",
+        "'in der Küche' = in the kitchen",
+        "Küche is feminine"
+      ],
+      "pattern": "Article + Noun + Verb + Preposition + Location",
+      "explanation": "Furniture placement uses 'stehen' (to stand). Küche is feminine"
     }
   ],
   "intermediate": [
@@ -76,6 +211,156 @@
       ],
       "pattern": "Subordinate clause + main clause OR main + subordinate",
       "explanation": "Subordinating conjunctions like 'weil' change word order - verb goes to the end"
+    },
+    {
+      "keyWords": ["können", "morgen", "kommen"],
+      "possibleAnswers": [
+        "Ich kann morgen nicht kommen",
+        "Kannst du morgen kommen?",
+        "Wir können morgen kommen"
+      ],
+      "hints": [
+        "Modal verb: kann, kannst, können",
+        "Infinitive goes to the end",
+        "Question: verb first"
+      ],
+      "pattern": "Subject + Modal + Time + (nicht) + Infinitive",
+      "explanation": "Modal verbs send the main verb (infinitive) to the end of the sentence"
+    },
+    {
+      "keyWords": ["haben", "Hunger", "essen"],
+      "possibleAnswers": [
+        "Ich habe Hunger und möchte essen",
+        "Weil ich Hunger habe, will ich essen",
+        "Da ich Hunger habe, gehe ich essen"
+      ],
+      "hints": [
+        "'Hunger haben' = to be hungry",
+        "Use 'möchte' or 'will' for wanting",
+        "Connect with 'und', 'weil', or 'da'"
+      ],
+      "pattern": "Subject + haben + Hunger + conjunction + eating expression",
+      "explanation": "German uses 'Hunger haben' instead of 'hungry sein'. Modal verbs express desire"
+    },
+    {
+      "keyWords": ["seit", "Jahr", "wohnen"],
+      "possibleAnswers": [
+        "Ich wohne seit einem Jahr hier",
+        "Seit einem Jahr wohnen wir hier",
+        "Er wohnt seit einem Jahr in Berlin"
+      ],
+      "hints": [
+        "'seit' requires dative case",
+        "'einem Jahr' = one year (dative)",
+        "Present tense for ongoing action"
+      ],
+      "pattern": "Subject + Verb + seit + Dative Time + Location",
+      "explanation": "'seit' + dative indicates duration. German uses present tense for ongoing actions"
+    },
+    {
+      "keyWords": ["müssen", "Arzt", "gehen"],
+      "possibleAnswers": [
+        "Ich muss zum Arzt gehen",
+        "Du musst zum Arzt gehen",
+        "Wir müssen zum Arzt gehen"
+      ],
+      "hints": [
+        "Modal verb: muss, musst, müssen",
+        "'zum Arzt' = to the doctor",
+        "Infinitive at the end"
+      ],
+      "pattern": "Subject + Modal + Preposition + Destination + Infinitive",
+      "explanation": "'zum' = 'zu dem' (to the). Modal verbs require infinitive at sentence end"
+    },
+    {
+      "keyWords": ["während", "Regen", "bleiben"],
+      "possibleAnswers": [
+        "Während es regnet, bleiben wir drinnen",
+        "Wir bleiben drinnen, während es regnet",
+        "Während des Regens bleiben wir zu Hause"
+      ],
+      "hints": [
+        "'während' with verb = while doing",
+        "'während + genitive' = during",
+        "Subordinate clause word order"
+      ],
+      "pattern": "Temporal clause + main clause",
+      "explanation": "'während' can be conjunction (+ verb) or preposition (+ genitive noun)"
+    },
+    {
+      "keyWords": ["nachdem", "Arbeit", "entspannen"],
+      "possibleAnswers": [
+        "Nachdem ich gearbeitet habe, entspanne ich mich",
+        "Ich entspanne mich, nachdem ich gearbeitet habe",
+        "Nachdem die Arbeit getan ist, entspannen wir uns"
+      ],
+      "hints": [
+        "'nachdem' requires perfect tense",
+        "Main clause: present tense",
+        "Reflexive: sich entspannen"
+      ],
+      "pattern": "Nachdem + perfect tense, main clause",
+      "explanation": "'nachdem' indicates sequence - first action complete, then second action"
+    },
+    {
+      "keyWords": ["obwohl", "kalt", "schwimmen"],
+      "possibleAnswers": [
+        "Obwohl es kalt ist, gehen wir schwimmen",
+        "Wir gehen schwimmen, obwohl es kalt ist",
+        "Obwohl das Wetter kalt ist, schwimmen wir"
+      ],
+      "hints": [
+        "'obwohl' = although/even though",
+        "Contrasts two ideas",
+        "Subordinate clause word order"
+      ],
+      "pattern": "Concessive clause + main clause",
+      "explanation": "'obwohl' introduces a contrast - despite the cold, swimming happens"
+    },
+    {
+      "keyWords": ["bevor", "ausgehen", "anziehen"],
+      "possibleAnswers": [
+        "Bevor wir ausgehen, ziehe ich mich an",
+        "Ich ziehe mich an, bevor wir ausgehen",
+        "Bevor sie ausgeht, zieht sie sich schön an"
+      ],
+      "hints": [
+        "'bevor' = before",
+        "Reflexive: sich anziehen",
+        "Separable verbs in subordinate clauses"
+      ],
+      "pattern": "Temporal clause + main clause",
+      "explanation": "'bevor' indicates temporal sequence. Separable verbs stay together in subordinate clauses"
+    },
+    {
+      "keyWords": ["sollten", "früh", "aufstehen"],
+      "possibleAnswers": [
+        "Wir sollten früh aufstehen",
+        "Du solltest früher aufstehen",
+        "Man sollte früh aufstehen"
+      ],
+      "hints": [
+        "Modal verb: sollte, solltest, sollten",
+        "Separable verb: aufstehen",
+        "'früh' = early, 'früher' = earlier"
+      ],
+      "pattern": "Subject + Modal + Adverb + Separable Verb",
+      "explanation": "Separable verbs split in main clauses - prefix goes to end"
+    },
+    {
+      "keyWords": ["dürfen", "nicht", "rauchen"],
+      "possibleAnswers": [
+        "Hier darf man nicht rauchen",
+        "Du darfst hier nicht rauchen",
+        "In diesem Gebäude dürfen Sie nicht rauchen"
+      ],
+      "hints": [
+        "Modal verb: darf, darfst, dürfen",
+        "'nicht' before infinitive",
+        "Permission/prohibition"
+      ],
+      "pattern": "Location + Modal + Subject + nicht + Infinitive",
+      "explanation": "'dürfen' expresses permission. 'nicht dürfen' = not allowed to"
     }
   ],
   "advanced": [
@@ -92,6 +377,171 @@
       ],
       "pattern": "Subjunctive condition + subjunctive result",
       "explanation": "Subjunctive II expresses hypothetical or unreal situations"
+    },
+    {
+      "keyWords": ["nachdem", "gelesen", "verstehen"],
+      "possibleAnswers": [
+        "Nachdem ich das Buch gelesen hatte, verstand ich es besser",
+        "Nachdem er den Artikel gelesen hatte, konnte er mitreden",
+        "Sie verstand den Film, nachdem sie das Buch gelesen hatte"
+      ],
+      "hints": [
+        "Past perfect: hatte + past participle",
+        "Sequence of past events",
+        "Main clause: simple past"
+      ],
+      "pattern": "Nachdem + past perfect, simple past",
+      "explanation": "Past perfect (Plusquamperfekt) shows earlier past action before another past action"
+    },
+    {
+      "keyWords": ["falls", "regnen", "absagen"],
+      "possibleAnswers": [
+        "Falls es regnet, sagen wir das Picknick ab",
+        "Wir sagen ab, falls es regnen sollte",
+        "Falls es stark regnet, müssen wir absagen"
+      ],
+      "hints": [
+        "'falls' = in case, if",
+        "Conditional meaning",
+        "Separable verb: absagen"
+      ],
+      "pattern": "Conditional clause + main clause",
+      "explanation": "'falls' introduces a hypothetical condition, different from 'wenn'"
+    },
+    {
+      "keyWords": ["je", "mehr", "desto"],
+      "possibleAnswers": [
+        "Je mehr ich lerne, desto besser verstehe ich es",
+        "Je öfter er übt, desto besser wird er",
+        "Je länger wir warten, desto später kommen wir an"
+      ],
+      "hints": [
+        "'je...desto' = the more...the more",
+        "Comparative forms required",
+        "Fixed construction"
+      ],
+      "pattern": "Je + comparative, desto + comparative",
+      "explanation": "Parallel comparative construction showing proportional relationship"
+    },
+    {
+      "keyWords": ["worden", "gebaut", "Jahrhundert"],
+      "possibleAnswers": [
+        "Das Schloss ist im 18. Jahrhundert erbaut worden",
+        "Diese Kirche ist vor 500 Jahren gebaut worden",
+        "Die Brücke ist letztes Jahr renoviert worden"
+      ],
+      "hints": [
+        "Passive perfect: ist...worden",
+        "Past participle of main verb",
+        "Time expressions in dative"
+      ],
+      "pattern": "Subject + ist + past participle + worden",
+      "explanation": "Perfect tense passive voice uses 'worden' instead of 'geworden'"
+    },
+    {
+      "keyWords": ["anstatt", "arbeiten", "entspannen"],
+      "possibleAnswers": [
+        "Anstatt zu arbeiten, entspannt er sich",
+        "Sie entspannt sich, anstatt zu arbeiten",
+        "Anstatt hart zu arbeiten, macht er Pause"
+      ],
+      "hints": [
+        "'anstatt' + zu + infinitive",
+        "Alternative action",
+        "Infinitive construction"
+      ],
+      "pattern": "Anstatt + zu + infinitive, main clause",
+      "explanation": "'anstatt...zu' expresses doing something instead of something else"
+    },
+    {
+      "keyWords": ["sowohl", "als auch", "sprechen"],
+      "possibleAnswers": [
+        "Er spricht sowohl Deutsch als auch Englisch",
+        "Sowohl die Studenten als auch die Lehrer sprechen darüber",
+        "Sie kann sowohl singen als auch tanzen"
+      ],
+      "hints": [
+        "'sowohl...als auch' = both...and",
+        "Connects equal elements",
+        "Parallel structure"
+      ],
+      "pattern": "Subject + Verb + sowohl + X + als auch + Y",
+      "explanation": "Coordinating conjunction connecting two equal elements"
+    },
+    {
+      "keyWords": ["wäre", "gewesen", "anders"],
+      "possibleAnswers": [
+        "Wenn ich da gewesen wäre, wäre alles anders gewesen",
+        "Wäre er früher gekommen, wäre es anders gewesen",
+        "Das wäre anders gewesen, wenn du geholfen hättest"
+      ],
+      "hints": [
+        "Subjunctive II past: wäre...gewesen",
+        "Hypothetical past situations",
+        "Conditional perfect"
+      ],
+      "pattern": "Conditional perfect + result clause",
+      "explanation": "Subjunctive II past expresses unreal situations in the past"
+    },
+    {
+      "keyWords": ["ohne", "wissen", "kaufen"],
+      "possibleAnswers": [
+        "Ohne es zu wissen, kaufte er das falsche Buch",
+        "Er kaufte das Auto, ohne den Preis zu wissen",
+        "Ohne vorher zu fragen, kaufte sie das Kleid"
+      ],
+      "hints": [
+        "'ohne...zu' = without doing",
+        "Infinitive construction",
+        "No subject in infinitive clause"
+      ],
+      "pattern": "Main clause + ohne + zu + infinitive",
+      "explanation": "'ohne...zu' expresses an action without doing something else"
+    },
+    {
+      "keyWords": ["lassen", "reparieren", "Auto"],
+      "possibleAnswers": [
+        "Ich lasse mein Auto reparieren",
+        "Er lässt das Auto in der Werkstatt reparieren",
+        "Wir haben das Auto reparieren lassen"
+      ],
+      "hints": [
+        "'lassen' = to have something done",
+        "Causative construction",
+        "Perfect: haben...lassen"
+      ],
+      "pattern": "Subject + lassen + Object + Infinitive",
+      "explanation": "'lassen' + infinitive means having someone else do something"
+    },
+    {
+      "keyWords": ["trotzdem", "Regen", "wandern"],
+      "possibleAnswers": [
+        "Es regnet stark, trotzdem gehen wir wandern",
+        "Trotz des Regens gehen wir wandern",
+        "Der Regen ist stark, trotzdem wandern wir"
+      ],
+      "hints": [
+        "'trotzdem' = nevertheless",
+        "Can also use 'trotz + genitive'",
+        "Expresses contrast"
+      ],
+      "pattern": "Statement + trotzdem + contrasting action",
+      "explanation": "'trotzdem' shows doing something despite circumstances"
+    },
+    {
+      "keyWords": ["indem", "üben", "verbessern"],
+      "possibleAnswers": [
+        "Er verbessert sein Deutsch, indem er täglich übt",
+        "Indem wir viel lesen, verbessern wir unseren Wortschatz",
+        "Sie lernt Deutsch, indem sie deutsche Filme schaut"
+      ],
+      "hints": [
+        "'indem' = by doing something",
+        "Shows method or means",
+        "Subordinate clause word order"
+      ],
+      "pattern": "Main clause + indem + method clause",
+      "explanation": "'indem' introduces the method by which something is achieved"
     }
   ]
 } 
