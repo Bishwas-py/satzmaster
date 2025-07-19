@@ -30,6 +30,8 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
   const [characterMistakes, setCharacterMistakes] = React.useState<Record<number, number>>({});
   const [revealedCharacters, setRevealedCharacters] = React.useState<Set<number>>(new Set());
   const [lastInput, setLastInput] = React.useState('');
+  const [shakingCharacters, setShakingCharacters] = React.useState<Set<number>>(new Set());
+  const [transitioningCharacters, setTransitioningCharacters] = React.useState<Record<number, string>>({});
 
   // Auto-focus the input when component mounts or when not finished
   React.useEffect(() => {
@@ -46,6 +48,8 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
     setCharacterMistakes({});
     setRevealedCharacters(new Set());
     setLastInput('');
+    setShakingCharacters(new Set());
+    setTransitioningCharacters({});
   }, [currentChallenge]);
 
   // Track character-level mistakes
@@ -54,7 +58,7 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
       const bestMatch = getBestMatch(userInput);
       const correctText = bestMatch.toLowerCase();
       const userText = userInput.toLowerCase();
-
+      
       // Check each character position
       for (let i = 0; i < userText.length; i++) {
         if (i < correctText.length && userText[i] !== correctText[i]) {
@@ -62,20 +66,56 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
           setCharacterMistakes(prev => {
             const newMistakes = { ...prev };
             newMistakes[i] = (newMistakes[i] || 0) + 1;
-
-            // If this character has been wrong 2+ times, reveal it
-            if (newMistakes[i] >= 2) {
-              setRevealedCharacters(prevRevealed => new Set(prevRevealed).add(i));
+            
+            // If this is the 2nd mistake at this position, reveal it
+            if (newMistakes[i] === 2) {
+              // Start shake animation and reveal after
+              setShakingCharacters(prevShaking => new Set(prevShaking).add(i));
+              setTransitioningCharacters(prev => ({ ...prev, [i]: userInput[i] }));
+              
+              // After 400ms, stop shaking and reveal correct character
+              setTimeout(() => {
+                setShakingCharacters(prevShaking => {
+                  const newShaking = new Set(prevShaking);
+                  newShaking.delete(i);
+                  return newShaking;
+                });
+                setRevealedCharacters(prevRevealed => new Set(prevRevealed).add(i));
+                setTransitioningCharacters(prev => {
+                  const newTransitioning = { ...prev };
+                  delete newTransitioning[i];
+                  return newTransitioning;
+                });
+              }, 400);
             }
-
+            // If this position is already revealed and user types wrong again, shake it
+            else if (newMistakes[i] > 2 || revealedCharacters.has(i)) {
+              setShakingCharacters(prevShaking => new Set(prevShaking).add(i));
+              setTransitioningCharacters(prev => ({ ...prev, [i]: userInput[i] }));
+              
+              // After 400ms, stop shaking and go back to showing correct character
+              setTimeout(() => {
+                setShakingCharacters(prevShaking => {
+                  const newShaking = new Set(prevShaking);
+                  newShaking.delete(i);
+                  return newShaking;
+                });
+                setTransitioningCharacters(prev => {
+                  const newTransitioning = { ...prev };
+                  delete newTransitioning[i];
+                  return newTransitioning;
+                });
+              }, 400);
+            }
+            
             return newMistakes;
           });
         }
       }
-
+      
       setLastInput(userInput);
     }
-  }, [userInput, lastInput]);
+  }, [userInput, lastInput, revealedCharacters]);
 
   // Get English translation for a German word
   const getWordTranslation = (germanWord: string): string => {
@@ -232,11 +272,17 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
                   const matchLength = getMatchLength(userText, correctText);
                   const isCorrect = index < matchLength && userText[index] === correctText[index];
                   const isRevealed = revealedCharacters.has(index);
+                  const isShaking = shakingCharacters.has(index);
+                  const transitioningChar = transitioningCharacters[index];
 
-                  let className = 'px-0.5 rounded mx-0.5 ';
+                  let className = 'px-0.5 rounded mx-0.5 transition-all duration-300 ';
                   let displayChar = char;
 
-                  if (isRevealed && !isCorrect && index < correctText.length) {
+                  if (isShaking && transitioningChar) {
+                    // Show the wrong character shaking in red
+                    className += 'text-red-700 bg-red-100 animate-shake font-bold ';
+                    displayChar = transitioningChar;
+                  } else if (isRevealed && !isCorrect && index < correctText.length) {
                     // Show the correct character in blue for revealed positions
                     className += 'text-blue-700 bg-blue-100 font-bold ';
                     displayChar = bestMatch[index]; // Show correct character with original case
