@@ -336,8 +336,10 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
 
           {isFinished && (
             <div className="absolute bottom-0 left-0 right-0 bg-green-50 border-2 border-green-400 rounded flex flex-col items-center justify-center p-4">
-              <span className="text-green-700 font-bold mb-2">✓ Complete!</span>
-              <span className="text-green-600 text-lg font-medium">
+              <span className="text-green-700 font-bold text-lg mb-1">
+                {userInput}
+              </span>
+              <span className="text-green-600 text-base font-medium">
                 {translateSentence(userInput)}
               </span>
             </div>
