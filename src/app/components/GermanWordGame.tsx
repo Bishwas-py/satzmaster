@@ -51,6 +51,34 @@ export const GermanWordGame = () => {
     }
   }, [difficulty, gameMode]);
 
+  // Global keyboard shortcuts
+  useEffect(() => {
+    const handleGlobalKeydown = (e: KeyboardEvent) => {
+      // Only handle global shortcuts when in game (not menu or result)
+      if (gameState !== 'typing' && gameState !== 'builder') return;
+      
+      if (e.ctrlKey && e.key === 'r') {
+        e.preventDefault();
+        resetCurrentSentence();
+      }
+      if (e.ctrlKey && e.key === 'n') {
+        e.preventDefault();
+        nextSentence();
+      }
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        if (gameMode === 'typing') {
+          setShowMeaning(!showMeaning);
+        } else {
+          setShowHints(!showHints);
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleGlobalKeydown);
+    return () => document.removeEventListener('keydown', handleGlobalKeydown);
+  }, [gameState, gameMode, showMeaning, showHints]); // Dependencies for the shortcuts
+
   const currentText = gameMode === 'typing' && shuffledTexts.length > 0
     ? shuffledTexts[currentTextIndex]
     : null;
@@ -205,15 +233,6 @@ export const GermanWordGame = () => {
       } else {
         handleBuilderSubmit();
       }
-    }
-    if (e.ctrlKey && e.key === 'r') {
-      e.preventDefault();
-      resetCurrentSentence();
-    }
-    // New shortcut: Ctrl+N for next challenge
-    if (e.ctrlKey && e.key === 'n') {
-      e.preventDefault();
-      nextSentence();
     }
   };
 
