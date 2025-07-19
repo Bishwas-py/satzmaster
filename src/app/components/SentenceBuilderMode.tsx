@@ -299,11 +299,6 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
                   );
                 })}
               </div>
-              {revealedCharacters.size > 0 && (
-                <div className="text-xs text-blue-600 mt-1">
-                  💡 Blue characters show correct letters after 2 mistakes at that position
-                </div>
-              )}
             </div>
           )}
 
