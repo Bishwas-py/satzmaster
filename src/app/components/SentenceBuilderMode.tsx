@@ -1,5 +1,6 @@
 import React from 'react';
 import { SentenceBuilderChallenge } from '../types';
+import { germanToEnglishDictionary } from '../data/germanTexts';
 
 interface SentenceBuilderModeProps {
   currentChallenge: SentenceBuilderChallenge;
@@ -33,6 +34,20 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
       return () => clearTimeout(timeoutId);
     }
   }, [isFinished, inputRef, currentChallenge.keyWords]);
+
+  // Get English translation for a German word
+  const getWordTranslation = (germanWord: string): string => {
+    // Remove punctuation for dictionary lookup
+    const cleanWord = germanWord.replace(/[.,!?;:]$/, '');
+    
+    // First try exact case match (important for Sie vs sie, etc.)
+    if (germanToEnglishDictionary[cleanWord]) {
+      return germanToEnglishDictionary[cleanWord];
+    }
+    
+    // If no exact match, try lowercase (for words like Ich, Das, etc.)
+    return germanToEnglishDictionary[cleanWord.toLowerCase()] || 'translation not found';
+  };
 
   const handleRetry = () => {
     onInputChange('');
@@ -127,12 +142,18 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
         {/* Key Words Display */}
         <div className="mb-8">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Build a sentence using these words:</h3>
-          <div className="flex flex-wrap gap-3 p-6 bg-gray-50 rounded">
-            {currentChallenge.keyWords.map((word, index) => (
-              <span key={index} className="bg-blue-100 text-blue-800 px-4 py-2 rounded-lg font-semibold text-lg">
-                {word}
-              </span>
-            ))}
+          <div className="p-4 bg-gray-50 rounded border">
+            <div className="flex flex-wrap gap-2">
+              {currentChallenge.keyWords.map((word, index) => (
+                <span 
+                  key={index} 
+                  className="bg-white border border-gray-300 px-3 py-1 text-gray-900 font-mono text-sm cursor-help hover:bg-gray-50 hover:border-gray-400 transition-colors"
+                  title={`${word} = ${getWordTranslation(word)}`}
+                >
+                  {word}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
