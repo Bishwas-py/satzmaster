@@ -26,11 +26,10 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
   onSubmit,
   inputRef
 }) => {
-  // Track mistakes and revealed words
-  const [mistakeCount, setMistakeCount] = React.useState(0);
-  const [revealThreshold] = React.useState(() => Math.floor(Math.random() * 5) + 3); // Random 3-7
-  const [revealedWords, setRevealedWords] = React.useState<Set<string>>(new Set());
-  const [lastIncorrectInput, setLastIncorrectInput] = React.useState('');
+  // Track character-level mistakes and revealed characters
+  const [characterMistakes, setCharacterMistakes] = React.useState<Record<number, number>>({});
+  const [revealedCharacters, setRevealedCharacters] = React.useState<Set<number>>(new Set());
+  const [lastInput, setLastInput] = React.useState('');
 
   // Auto-focus the input when component mounts or when not finished
   React.useEffect(() => {
@@ -42,56 +41,52 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
     }
   }, [isFinished, inputRef, currentChallenge.keyWords]);
 
-  // Reset mistake tracking when challenge changes
+  // Reset character tracking when challenge changes
   React.useEffect(() => {
-    setMistakeCount(0);
-    setRevealedWords(new Set());
-    setLastIncorrectInput('');
+    setCharacterMistakes({});
+    setRevealedCharacters(new Set());
+    setLastInput('');
   }, [currentChallenge]);
 
-  // Track incorrect attempts and reveal words when threshold is reached
+  // Track character-level mistakes
   React.useEffect(() => {
-    if (isCorrect === false && userInput !== lastIncorrectInput && userInput.trim().length > 0) {
-      setLastIncorrectInput(userInput);
-      setMistakeCount(prev => {
-        const newCount = prev + 1;
-        if (newCount >= revealThreshold) {
-          // Reveal a word from the best matching answer
-          const bestMatch = getBestMatch(userInput);
-          const userWords = userInput.toLowerCase().trim().split(/\s+/);
-          const correctWords = bestMatch.toLowerCase().split(/\s+/);
-          
-          // Find the first incorrect word to reveal
-          for (let i = 0; i < Math.min(userWords.length, correctWords.length); i++) {
-            if (userWords[i] !== correctWords[i] && !revealedWords.has(correctWords[i])) {
-              setRevealedWords(prev => new Set(prev).add(correctWords[i]));
-              break;
+    if (userInput !== lastInput && userInput.length > 0) {
+      const bestMatch = getBestMatch(userInput);
+      const correctText = bestMatch.toLowerCase();
+      const userText = userInput.toLowerCase();
+
+      // Check each character position
+      for (let i = 0; i < userText.length; i++) {
+        if (i < correctText.length && userText[i] !== correctText[i]) {
+          // Character is wrong at position i
+          setCharacterMistakes(prev => {
+            const newMistakes = { ...prev };
+            newMistakes[i] = (newMistakes[i] || 0) + 1;
+
+            // If this character has been wrong 2+ times, reveal it
+            if (newMistakes[i] >= 2) {
+              setRevealedCharacters(prevRevealed => new Set(prevRevealed).add(i));
             }
-          }
-          
-          // If all typed words are correct but sentence is incomplete, reveal next word
-          if (userWords.length < correctWords.length && userWords.every((word, i) => word === correctWords[i])) {
-            const nextWord = correctWords[userWords.length];
-            if (!revealedWords.has(nextWord)) {
-              setRevealedWords(prev => new Set(prev).add(nextWord));
-            }
-          }
+
+            return newMistakes;
+          });
         }
-        return newCount;
-      });
+      }
+
+      setLastInput(userInput);
     }
-  }, [isCorrect, userInput, lastIncorrectInput, revealThreshold, revealedWords]);
+  }, [userInput, lastInput]);
 
   // Get English translation for a German word
   const getWordTranslation = (germanWord: string): string => {
     // Remove punctuation for dictionary lookup
     const cleanWord = germanWord.replace(/[.,!?;:]$/, '');
-    
+
     // First try exact case match (important for Sie vs sie, etc.)
     if (germanToEnglishDictionary[cleanWord]) {
       return germanToEnglishDictionary[cleanWord];
     }
-    
+
     // If no exact match, try lowercase (for words like Ich, Das, etc.)
     return germanToEnglishDictionary[cleanWord.toLowerCase()] || 'translation not found';
   };
@@ -104,11 +99,11 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
   // Get the best matching target answer for real-time validation
   const getBestMatch = (input: string) => {
     if (!input.trim()) return currentChallenge.possibleAnswers[0];
-    
+
     // Find the answer that matches the most characters from the beginning
     let bestMatch = currentChallenge.possibleAnswers[0];
     let maxMatchLength = 0;
-    
+
     for (const answer of currentChallenge.possibleAnswers) {
       const matchLength = getMatchLength(input.toLowerCase(), answer.toLowerCase());
       if (matchLength > maxMatchLength) {
@@ -116,7 +111,7 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
         bestMatch = answer;
       }
     }
-    
+
     return bestMatch;
   };
 
@@ -136,10 +131,10 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
   // Render the input with real-time validation styling
   const renderValidationDisplay = () => {
     if (!userInput) return null;
-    
+
     const bestMatch = getBestMatch(userInput);
     const matchLength = getMatchLength(userInput.toLowerCase(), bestMatch.toLowerCase());
-    
+
     return (
       <div className="absolute inset-0 pointer-events-none font-mono text-2xl p-4 flex items-center z-5">
         <div className="flex">
@@ -232,71 +227,70 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
               <div className="flex flex-wrap">
                 {userInput.split('').map((char, index) => {
                   const bestMatch = getBestMatch(userInput);
-                  const matchLength = getMatchLength(userInput.toLowerCase(), bestMatch.toLowerCase());
-                  const isCorrect = index < matchLength;
-                  
+                  const correctText = bestMatch.toLowerCase();
+                  const userText = userInput.toLowerCase();
+                  const matchLength = getMatchLength(userText, correctText);
+                  const isCorrect = index < matchLength && userText[index] === correctText[index];
+                  const isRevealed = revealedCharacters.has(index);
+
+                  let className = 'px-0.5 rounded mx-0.5 ';
+                  let displayChar = char;
+
+                  if (isRevealed && !isCorrect && index < correctText.length) {
+                    // Show the correct character in blue for revealed positions
+                    className += 'text-blue-700 bg-blue-100 font-bold ';
+                    displayChar = bestMatch[index]; // Show correct character with original case
+                  } else if (isCorrect) {
+                    className += 'text-green-700 bg-green-100 ';
+                  } else {
+                    className += 'text-red-700 bg-red-100 ';
+                  }
+
                   return (
-                    <span
-                      key={index}
-                      className={`${
-                        isCorrect 
-                          ? 'text-green-700 bg-green-100' 
-                          : 'text-red-700 bg-red-100'
-                      } px-0.5 rounded mx-0.5`}
-                    >
-                      {char === ' ' ? '␣' : char}
+                    <span key={index} className={className}>
+                      {displayChar === ' ' ? '␣' : displayChar}
                     </span>
                   );
                 })}
               </div>
+              {revealedCharacters.size > 0 && (
+                <div className="text-xs text-blue-600 mt-1">
+                  💡 Blue characters show correct letters after 2 mistakes at that position
+                </div>
+              )}
             </div>
           )}
 
-          {/* Show revealed words hint */}
-          {revealedWords.size > 0 && (
-            <div className="mb-2 p-3 bg-blue-50 border border-blue-200 rounded">
-              <div className="text-sm text-blue-800 font-semibold mb-2">
-                💡 Revealed word(s) after {mistakeCount} attempts:
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {Array.from(revealedWords).map((word, index) => (
-                  <span key={index} className="bg-blue-100 text-blue-800 px-2 py-1 rounded font-mono text-sm border border-blue-300">
-                    {word}
-                  </span>
-                ))}
-              </div>
-              <div className="text-xs text-blue-600 mt-2">
-                Try incorporating these words into your sentence!
-              </div>
-            </div>
-          )}
-          
-          <input
-            ref={inputRef}
-            type="text"
-            value={userInput}
-            onChange={(e) => onInputChange(e.target.value)}
-            onKeyDown={onKeyPress}
-            placeholder="Type your German sentence here..."
-            className="w-full text-2xl p-4 border-2 border-gray-400 focus:border-gray-700 focus:outline-none bg-white font-mono text-gray-900 placeholder-gray-500 shadow-sm"
-            disabled={isFinished}
-            autoFocus
-          />
-          
+          {/* Input field */}
+          <div className="relative">
+            {/* Actual input field */}
+            <input
+              ref={inputRef}
+              type="text"
+              value={userInput}
+              onChange={(e) => onInputChange(e.target.value)}
+              onKeyDown={onKeyPress}
+              placeholder="Type your German sentence here..."
+              className="w-full text-2xl p-4 border-2 border-gray-400 focus:border-gray-700 focus:outline-none font-mono text-gray-900 placeholder-gray-500 shadow-sm"
+              disabled={isFinished}
+              autoFocus
+            />
+          </div>
+
           {isFinished && (
             <div className="absolute bottom-0 left-0 right-0 bg-green-50 border-2 border-green-400 rounded flex items-center justify-center p-4">
               <span className="text-green-700 font-bold">Perfect! ✓</span>
             </div>
           )}
-          
+
           {isCorrect === false && (
             <div className="absolute bottom-0 left-0 right-0 bg-red-50 border-2 border-red-400 rounded flex items-center justify-center p-4">
               <div className="text-center">
                 <div className="text-red-700 font-bold mb-2">
                   Try again! Check word order and articles
-                  {mistakeCount > 0 && (
+                  {Object.keys(characterMistakes).length > 0 && (
                     <span className="text-red-600 text-sm ml-2">
-                      (Attempt {mistakeCount}/{revealThreshold})
+                      ({Object.values(characterMistakes).reduce((sum, val) => sum + val, 0)} character mistakes)
                     </span>
                   )}
                 </div>
