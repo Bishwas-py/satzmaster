@@ -329,13 +329,6 @@ export const GermanWordGame = () => {
           <div className="flex items-center space-x-4">
             <span>Completed: {completedCount}</span>
             <span>Current: {currentTextIndex + 1}/{maxIndex}</span>
-            <button
-              onClick={reshuffleContent}
-              className="text-gray-700 hover:text-gray-900 transition-colors px-2 py-1 border border-gray-300 rounded"
-              title="Reshuffle content"
-            >
-              🔀 Shuffle
-            </button>
             {currentTextIndex + 1 < maxIndex && (
               <button
                 onClick={nextSentence}
