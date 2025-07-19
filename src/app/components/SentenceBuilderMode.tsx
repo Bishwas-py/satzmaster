@@ -57,11 +57,12 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
   // Track character-level mistakes
   React.useEffect(() => {
     if (userInput !== lastInput && userInput.length > 0) {
-      const bestMatch = getBestMatch(userInput);
-      const correctText = bestMatch.toLowerCase();
+      // Always use the first answer as the target for character-level validation
+      const targetSentence = currentChallenge.possibleAnswers[0].german;
+      const correctText = targetSentence.toLowerCase();
       const userText = userInput.toLowerCase();
       
-      // Check each character position
+      // Check each character position in user input
       for (let i = 0; i < userText.length; i++) {
         if (i < correctText.length && userText[i] !== correctText[i]) {
           // Character is wrong at position i
@@ -89,6 +90,33 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
                   return newTransitioning;
                 });
               }, 400);
+            }
+            // Allow new hint if user has moved beyond all previously revealed characters
+            else if (newMistakes[i] === 4 && revealedCharacters.size > 0) {
+              // Check if current position is beyond all previously revealed characters
+              const maxRevealedIndex = Math.max(...Array.from(revealedCharacters));
+              const isBeyondRevealed = i > maxRevealedIndex;
+              
+              // Allow new hint if user is beyond previous hints and we haven't exceeded reasonable limit
+              if (isBeyondRevealed && revealedCharacters.size < 5) {
+                // Start shake animation and reveal new character
+                setShakingCharacters(prevShaking => new Set(prevShaking).add(i));
+                setTransitioningCharacters(prev => ({ ...prev, [i]: userInput[i] }));
+                
+                setTimeout(() => {
+                  setShakingCharacters(prevShaking => {
+                    const newShaking = new Set(prevShaking);
+                    newShaking.delete(i);
+                    return newShaking;
+                  });
+                  setRevealedCharacters(prevRevealed => new Set(prevRevealed).add(i));
+                  setTransitioningCharacters(prev => {
+                    const newTransitioning = { ...prev };
+                    delete newTransitioning[i];
+                    return newTransitioning;
+                  });
+                }, 400);
+              }
             }
             // If this position is already revealed and user types wrong again, shake it
             else if (revealedCharacters.has(i)) {
@@ -190,7 +218,7 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
   const renderMonkeytypeBuilder = () => {
     if (!userInput) {
       return (
-        <div className="text-3xl leading-relaxed font-mono text-gray-400 p-8">
+        <div className="text-3xl leading-relaxed font-mono text-gray-400 p-8 h-24 flex items-center justify-center">
           <div className="text-center">
             <div className="text-lg mb-2">Start typing your German sentence...</div>
             <div className="text-base opacity-75">Use the keywords above as your guide</div>
@@ -199,43 +227,55 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
       );
     }
 
-    const bestMatch = getBestMatch(userInput);
+    // Always use the first answer as the target for visual comparison (consistent with mistake tracking)
+    const targetSentence = currentChallenge.possibleAnswers[0].german;
     const userText = userInput;
     
     return (
-      <div className="text-3xl leading-relaxed font-mono p-8 select-none">
-        {userText.split('').map((char, index) => {
-          let className = '';
-          let displayChar = char;
-          const isRevealed = revealedCharacters.has(index);
-          const isShaking = shakingCharacters.has(index);
-          const transitioningChar = transitioningCharacters[index];
+      <div className="text-3xl leading-relaxed font-mono p-8 select-none min-h-24 flex flex-wrap items-start">
+        <div className="w-full flex flex-wrap items-center gap-1">
+          {userText.split('').map((char, index) => {
+            let className = '';
+            let displayChar = char;
+            const isRevealed = revealedCharacters.has(index);
+            const isShaking = shakingCharacters.has(index);
+            const transitioningChar = transitioningCharacters[index];
+            
+            if (isShaking && transitioningChar) {
+              // Show the wrong character shaking in red
+              className = 'text-red-500 animate-shake';
+              displayChar = transitioningChar;
+            } else if (isRevealed && index < targetSentence.length) {
+              // Show the correct character in blue for revealed positions
+              className = 'text-blue-500';
+              displayChar = targetSentence[index]; // Show correct character with original case
+            } else if (index < targetSentence.length && userText[index].toLowerCase() === targetSentence[index].toLowerCase()) {
+              // Correct character (case insensitive comparison)
+              className = 'text-green-500';
+            } else {
+              // Wrong character
+              className = 'text-red-500';
+            }
+            
+            // Handle spaces with visible indicator
+            if (displayChar === ' ') {
+              return (
+                <span key={index} className={className + ' bg-gray-200 mx-1 px-2 rounded flex-shrink-0'}>
+                  ⎵
+                </span>
+              );
+            }
+            
+            return (
+              <span key={index} className={className + ' flex-shrink-0'}>
+                {displayChar}
+              </span>
+            );
+          })}
           
-          if (isShaking && transitioningChar) {
-            // Show the wrong character shaking in red
-            className = 'text-red-500 bg-red-500/20 animate-shake';
-            displayChar = transitioningChar;
-          } else if (isRevealed && index < bestMatch.length) {
-            // Show the correct character in blue for revealed positions
-            className = 'text-blue-500 bg-blue-500/20';
-            displayChar = bestMatch[index]; // Show correct character with original case
-          } else if (index < bestMatch.length && userText[index] === bestMatch[index]) {
-            // Correct character
-            className = 'text-green-500';
-          } else {
-            // Wrong character
-            className = 'text-red-500 bg-red-500/20';
-          }
-          
-          return (
-            <span key={index} className={className}>
-              {displayChar}
-            </span>
-          );
-        })}
-        
-        {/* Simple cursor */}
-        <span className="bg-yellow-400 text-yellow-400 animate-pulse">|</span>
+          {/* Cursor at current position */}
+          <span className="w-0.5 h-8 bg-yellow-400 animate-pulse ml-0.5 inline-block transition-all duration-150 ease-out flex-shrink-0"></span>
+        </div>
       </div>
     );
   };
@@ -338,12 +378,12 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
         <div className="relative">
           {/* Clean Monkeytype-style Text Display */}
           <div 
-            className="min-h-[180px] bg-white rounded-lg border border-gray-200 focus-within:border-gray-400 cursor-text mb-4 transition-colors"
+            className="min-h-[180px] max-h-[300px] overflow-auto bg-white rounded-lg border border-gray-200 focus-within:border-gray-400 cursor-text mb-4 transition-colors"
             onClick={() => inputRef.current?.focus()}
           >
             {/* Simple progress indicator */}
             {userInput.length > 0 && (
-              <div className="absolute top-2 right-2 text-xs text-gray-500">
+              <div className="absolute top-2 right-2 text-xs text-gray-500 z-10">
                 {userInput.length}
               </div>
             )}
@@ -375,12 +415,19 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
             ref={inputRef}
             type="text"
             value={userInput}
-            onChange={(e) => onInputChange(e.target.value)}
+            onChange={(e) => {
+              // Limit input to reasonable length to prevent overflow
+              const maxLength = 200;
+              if (e.target.value.length <= maxLength) {
+                onInputChange(e.target.value);
+              }
+            }}
             onKeyDown={onKeyPress}
             onFocus={onInputFocus}
             className="absolute -left-9999px opacity-0"
             disabled={isFinished}
             autoFocus
+            maxLength={200}
           />
 
           {isCorrect === false && (
