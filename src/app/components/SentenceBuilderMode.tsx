@@ -1,4 +1,5 @@
 import React from 'react';
+import * as Tooltip from '@radix-ui/react-tooltip';
 import { SentenceBuilderChallenge } from '../types';
 import { germanToEnglishDictionary } from '../data/germanTexts';
 
@@ -112,7 +113,7 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
   };
 
   return (
-    <>
+    <Tooltip.Provider delayDuration={300}>
       {/* Learning Panel */}
       {showHints && (
         <div className="bg-white border border-gray-300 p-6 mb-4 shadow-sm">
@@ -145,13 +146,26 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
           <div className="p-4 bg-gray-50 rounded border">
             <div className="flex flex-wrap gap-2">
               {currentChallenge.keyWords.map((word, index) => (
-                <span 
-                  key={index} 
-                  className="bg-white border border-gray-300 px-3 py-1 text-gray-900 font-mono text-sm cursor-help hover:bg-gray-50 hover:border-gray-400 transition-colors"
-                  title={`${word} = ${getWordTranslation(word)}`}
-                >
-                  {word}
-                </span>
+                <Tooltip.Root key={index}>
+                  <Tooltip.Trigger asChild>
+                    <span className="bg-white border border-gray-300 px-3 py-1 text-gray-900 font-mono text-sm cursor-help hover:bg-gray-50 hover:border-gray-400 transition-colors">
+                      {word}
+                    </span>
+                  </Tooltip.Trigger>
+                  <Tooltip.Portal>
+                    <Tooltip.Content
+                      className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-mono shadow-lg border border-gray-700 z-50"
+                      sideOffset={5}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="text-gray-300">{word}</span>
+                        <span className="text-gray-500">=</span>
+                        <span className="text-white">{getWordTranslation(word)}</span>
+                      </div>
+                      <Tooltip.Arrow className="fill-gray-900" />
+                    </Tooltip.Content>
+                  </Tooltip.Portal>
+                </Tooltip.Root>
               ))}
             </div>
           </div>
@@ -238,6 +252,6 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
           </div>
         )}
       </div>
-    </>
+    </Tooltip.Provider>
   );
 }; 
