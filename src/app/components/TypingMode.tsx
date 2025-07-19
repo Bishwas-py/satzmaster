@@ -1,5 +1,6 @@
 import React from 'react';
 import { GermanText } from '../types';
+import { germanToEnglishDictionary } from '../data/germanTexts';
 
 interface TypingModeProps {
   currentText: GermanText;
@@ -26,12 +27,30 @@ export const TypingMode: React.FC<TypingModeProps> = ({
   onKeyPress,
   inputRef
 }) => {
-  // Render word with correct/incorrect styling
+  // Auto-focus the input when component mounts or when not finished
+  React.useEffect(() => {
+    if (!isFinished && inputRef.current) {
+      const timeoutId = setTimeout(() => {
+        inputRef.current?.focus();
+      }, 50);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [isFinished, inputRef, currentText.text]);
+
+  // Get English translation for a German word
+  const getWordTranslation = (germanWord: string): string => {
+    // Remove punctuation for dictionary lookup
+    const cleanWord = germanWord.replace(/[.,!?;:]$/, '');
+    return germanToEnglishDictionary[cleanWord] || '?';
+  };
+
+  // Render word with correct/incorrect styling and translation
   const renderWord = (word: string, index: number) => {
     const typedWord = typedWords[index] || '';
     const isCurrentWord = index === currentWordIndex;
     const isCompleted = index < typedWords.length - 1;
     const isCorrect = typedWord === word;
+    const shouldShowTranslation = isCompleted && isCorrect;
     
     let className = 'mx-1 ';
     
@@ -44,9 +63,16 @@ export const TypingMode: React.FC<TypingModeProps> = ({
     }
     
     return (
-      <span key={index} className={className + 'px-1 py-0.5 rounded'}>
-        {word}
-      </span>
+      <div key={index} className="inline-block mx-1">
+        <span className={className + 'px-1 py-0.5 rounded'}>
+          {word}
+        </span>
+        {shouldShowTranslation && (
+          <div className="text-center text-sm text-blue-600 mt-1 font-normal">
+            {getWordTranslation(word)}
+          </div>
+        )}
+      </div>
     );
   };
 
@@ -71,10 +97,12 @@ export const TypingMode: React.FC<TypingModeProps> = ({
 
       {/* Main Content Area */}
       <div className="bg-white border border-gray-300 p-8 shadow-sm">
-        {/* Text Display */}
-        <div className="text-3xl leading-relaxed mb-8 p-6 bg-gray-50 rounded min-h-[120px] flex items-center">
+        {/* Text Display with Live Translations */}
+        <div className="text-3xl leading-relaxed mb-8 p-6 bg-gray-50 rounded min-h-[160px] flex items-start">
           <div className="w-full">
-            {targetWords.map((word, index) => renderWord(word, index))}
+            <div className="flex flex-wrap items-start">
+              {targetWords.map((word, index) => renderWord(word, index))}
+            </div>
           </div>
         </div>
 
@@ -97,6 +125,11 @@ export const TypingMode: React.FC<TypingModeProps> = ({
               <span className="text-green-700 font-bold">Perfect! ✓</span>
             </div>
           )}
+        </div>
+
+        {/* Real-time Translation Hint */}
+        <div className="mt-4 text-sm text-gray-600 text-center">
+          ✨ English translations appear below each word as you type them correctly
         </div>
       </div>
     </>

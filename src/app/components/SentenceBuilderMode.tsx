@@ -24,6 +24,16 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
   onSubmit,
   inputRef
 }) => {
+  // Auto-focus the input when component mounts or when not finished
+  React.useEffect(() => {
+    if (!isFinished && inputRef.current) {
+      const timeoutId = setTimeout(() => {
+        inputRef.current?.focus();
+      }, 50);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [isFinished, inputRef, currentChallenge.keyWords]);
+
   const handleRetry = () => {
     onInputChange('');
     inputRef.current?.focus();

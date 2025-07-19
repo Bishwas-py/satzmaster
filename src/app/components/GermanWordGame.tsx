@@ -92,7 +92,8 @@ export const GermanWordGame = () => {
             setCurrentWordIndex(0);
             setIsFinished(false);
             setErrors(0);
-            inputRef.current?.focus();
+            // Improved auto-focus with longer timeout
+            setTimeout(() => inputRef.current?.focus(), 150);
           } else {
             setGameState('result');
           }
@@ -121,7 +122,7 @@ export const GermanWordGame = () => {
           setIsCorrect(null);
           setShowHints(false);
           // Auto-focus the input for the next challenge
-          setTimeout(() => inputRef.current?.focus(), 100);
+          setTimeout(() => inputRef.current?.focus(), 200);
         } else {
           setGameState('result');
         }
@@ -160,7 +161,7 @@ export const GermanWordGame = () => {
     setIsFinished(false);
     setIsCorrect(null);
     setShowHints(false);
-    inputRef.current?.focus();
+    setTimeout(() => inputRef.current?.focus(), 100);
   };
 
   const nextSentence = () => {
