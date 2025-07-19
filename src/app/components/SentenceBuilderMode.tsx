@@ -67,8 +67,8 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
             const newMistakes = { ...prev };
             newMistakes[i] = (newMistakes[i] || 0) + 1;
             
-            // If this is the 2nd mistake at this position, reveal it
-            if (newMistakes[i] === 2) {
+            // If this is the 4th mistake at this position, reveal it
+            if (newMistakes[i] === 4) {
               // Start shake animation and reveal after
               setShakingCharacters(prevShaking => new Set(prevShaking).add(i));
               setTransitioningCharacters(prev => ({ ...prev, [i]: userInput[i] }));
@@ -89,7 +89,7 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
               }, 400);
             }
             // If this position is already revealed and user types wrong again, shake it
-            else if (newMistakes[i] > 2 || revealedCharacters.has(i)) {
+            else if (newMistakes[i] > 4 || revealedCharacters.has(i)) {
               setShakingCharacters(prevShaking => new Set(prevShaking).add(i));
               setTransitioningCharacters(prev => ({ ...prev, [i]: userInput[i] }));
               
