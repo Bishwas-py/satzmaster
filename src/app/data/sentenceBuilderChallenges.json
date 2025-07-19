@@ -62,7 +62,7 @@
         "explanation": "Mädchen is neuter despite referring to a girl. 'im Garten' = in the garden"
       },
       {
-        "keyWords": ["wir", "Musik", "hören"],
+        "keyWords": ["wir", "Musik", "hören", "schöne"],
         "possibleAnswers": [
           "Wir hören Musik",
           "Wir hören die Musik",
@@ -107,7 +107,7 @@
         "explanation": "Kind is neuter. Milch (milk) often used without article in general statements"
       },
       {
-        "keyWords": ["Lehrer", "sprechen", "Deutsch"],
+        "keyWords": ["Lehrer", "sprechen", "Deutsch", "gut"],
         "possibleAnswers": [
           "Der Lehrer spricht Deutsch",
           "Ein Lehrer spricht Deutsch",
@@ -122,7 +122,7 @@
         "explanation": "Language names like Deutsch don't need articles when used as objects"
       },
       {
-        "keyWords": ["Frau", "kaufen", "Brot"],
+        "keyWords": ["Frau", "kaufen", "Brot", "frisches"],
         "possibleAnswers": [
           "Die Frau kauft Brot",
           "Eine Frau kauft das Brot",
@@ -152,7 +152,7 @@
         "explanation": "'in + dative' for location. Bibliothek is feminine, so 'in der Bibliothek'"
       },
       {
-        "keyWords": ["Vogel", "fliegen", "Himmel"],
+        "keyWords": ["Vogel", "fliegen", "Himmel", "viele"],
         "possibleAnswers": [
           "Der Vogel fliegt am Himmel",
           "Ein Vogel fliegt am Himmel",
@@ -182,7 +182,7 @@
         "explanation": "Furniture placement uses 'stehen' (to stand). Küche is feminine"
       },
       {
-        "keyWords": ["Sonne", "scheinen", "hell"],
+        "keyWords": ["Sonne", "scheinen", "hell", "heute"],
         "possibleAnswers": [
           "Die Sonne scheint hell",
           "Heute scheint die Sonne hell",
@@ -197,7 +197,7 @@
         "explanation": "Weather expressions often use 'scheinen'. Adverbs don't change form"
       },
       {
-        "keyWords": ["Junge", "schwimmen", "See"],
+        "keyWords": ["Junge", "schwimmen", "See", "gern"],
         "possibleAnswers": [
           "Der Junge schwimmt im See",
           "Ein Junge schwimmt im See",
@@ -212,7 +212,7 @@
         "explanation": "'im' = 'in dem'. See (lake) is masculine, different from See (ocean) which is feminine"
       },
       {
-        "keyWords": ["Blume", "wachsen", "Garten"],
+        "keyWords": ["Blume", "wachsen", "Garten", "schöne"],
         "possibleAnswers": [
           "Die Blume wächst im Garten",
           "Blumen wachsen im Garten",
@@ -227,7 +227,7 @@
         "explanation": "'wachsen' is irregular: ich wachse, du wächst, er/sie/es wächst"
       },
       {
-        "keyWords": ["Oma", "backen", "Kuchen"],
+        "keyWords": ["Oma", "backen", "Kuchen", "heute", "leckeren"],
         "possibleAnswers": [
           "Die Oma backt einen Kuchen",
           "Meine Oma backt Kuchen",
@@ -242,7 +242,7 @@
         "explanation": "Kuchen is masculine, so accusative is 'einen Kuchen'"
       },
       {
-        "keyWords": ["Fisch", "schwimmen", "Wasser"],
+        "keyWords": ["Fisch", "schwimmen", "Wasser", "bunter"],
         "possibleAnswers": [
           "Der Fisch schwimmt im Wasser",
           "Fische schwimmen im Wasser",
@@ -257,7 +257,7 @@
         "explanation": "Wasser is neuter, so 'im Wasser' (in + dem = im)"
       },
       {
-        "keyWords": ["Vater", "arbeiten", "Büro"],
+        "keyWords": ["Vater", "arbeiten", "Büro", "heute"],
         "possibleAnswers": [
           "Der Vater arbeitet im Büro",
           "Mein Vater arbeitet im Büro",
@@ -272,7 +272,7 @@
         "explanation": "Family members and workplace locations. Büro is neuter"
       },
       {
-        "keyWords": ["Mutter", "kochen", "Küche"],
+        "keyWords": ["Mutter", "kochen", "Küche", "heute"],
         "possibleAnswers": [
           "Die Mutter kocht in der Küche",
           "Meine Mutter kocht in der Küche",
@@ -287,7 +287,7 @@
         "explanation": "Both Mutter and Küche are feminine nouns"
       },
       {
-        "keyWords": ["Zug", "fahren", "Bahnhof"],
+        "keyWords": ["Zug", "fahren", "Bahnhof", "schnelle"],
         "possibleAnswers": [
           "Der Zug fährt zum Bahnhof",
           "Ein Zug fährt vom Bahnhof",
@@ -302,7 +302,7 @@
         "explanation": "'zum' = zu + dem (to the), 'vom' = von + dem (from the)"
       },
       {
-        "keyWords": ["Fenster", "öffnen", "Luft"],
+        "keyWords": ["Fenster", "öffnen", "Luft", "frische"],
         "possibleAnswers": [
           "Ich öffne das Fenster für frische Luft",
           "Das Fenster ist geöffnet für Luft",
@@ -317,7 +317,7 @@
         "explanation": "Fenster is neuter. 'für' requires accusative case"
       },
       {
-        "keyWords": ["Schnee", "fallen", "Winter"],
+        "keyWords": ["Schnee", "fallen", "Winter", "heute", "viel"],
         "possibleAnswers": [
           "Der Schnee fällt im Winter",
           "Im Winter fällt Schnee",
@@ -332,7 +332,7 @@
         "explanation": "Weather and seasons. Both Schnee and Winter are masculine"
       },
       {
-        "keyWords": ["Bruder", "spielen", "Fußball"],
+        "keyWords": ["Bruder", "spielen", "Fußball", "gern", "heute"],
         "possibleAnswers": [
           "Mein Bruder spielt Fußball",
           "Der Bruder spielt gern Fußball",
@@ -347,7 +347,7 @@
         "explanation": "Sports and games typically used without articles"
       },
       {
-        "keyWords": ["Schwester", "malen", "Bild"],
+        "keyWords": ["Schwester", "malen", "Bild", "schönes"],
         "possibleAnswers": [
           "Die Schwester malt ein Bild",
           "Meine Schwester malt Bilder",
@@ -364,7 +364,7 @@
     ],
     "intermediate": [
       {
-        "keyWords": ["gestern", "Film", "sehen"],
+        "keyWords": ["gestern", "Film", "sehen", "einen"],
         "possibleAnswers": [
           "Gestern habe ich einen Film gesehen",
           "Ich habe gestern einen Film gesehen",
@@ -423,7 +423,7 @@
         "explanation": "German uses 'Hunger haben' instead of 'hungry sein'. Modal verbs express desire"
       },
       {
-        "keyWords": ["seit", "Jahr", "wohnen"],
+        "keyWords": ["seit", "Jahr", "wohnen", "einem"],
         "possibleAnswers": [
           "Ich wohne seit einem Jahr hier",
           "Seit einem Jahr wohnen wir hier",
@@ -453,7 +453,7 @@
         "explanation": "'zum' = 'zu dem' (to the). Modal verbs require infinitive at sentence end"
       },
       {
-        "keyWords": ["während", "Regen", "bleiben"],
+        "keyWords": ["während", "Regen", "bleiben", "drinnen"],
         "possibleAnswers": [
           "Während es regnet, bleiben wir drinnen",
           "Wir bleiben drinnen, während es regnet",
@@ -468,7 +468,7 @@
         "explanation": "'während' can be conjunction (+ verb) or preposition (+ genitive noun)"
       },
       {
-        "keyWords": ["nachdem", "Arbeit", "entspannen"],
+        "keyWords": ["nachdem", "Arbeit", "entspannen", "getan"],
         "possibleAnswers": [
           "Nachdem ich gearbeitet habe, entspanne ich mich",
           "Ich entspanne mich, nachdem ich gearbeitet habe",
@@ -498,7 +498,7 @@
         "explanation": "'obwohl' introduces a contrast - despite the cold, swimming happens"
       },
       {
-        "keyWords": ["bevor", "ausgehen", "anziehen"],
+        "keyWords": ["bevor", "ausgehen", "anziehen", "schön"],
         "possibleAnswers": [
           "Bevor wir ausgehen, ziehe ich mich an",
           "Ich ziehe mich an, bevor wir ausgehen",
@@ -543,7 +543,7 @@
         "explanation": "'dürfen' expresses permission. 'nicht dürfen' = not allowed to"
       },
       {
-        "keyWords": ["werden", "Lehrer", "studieren"],
+        "keyWords": ["werden", "Lehrer", "studieren", "deshalb"],
         "possibleAnswers": [
           "Ich werde Lehrer werden, deshalb studiere ich",
           "Um Lehrer zu werden, muss ich studieren",
@@ -558,7 +558,7 @@
         "explanation": "Double 'werden' for future profession. 'um...zu' expresses purpose"
       },
       {
-        "keyWords": ["wenn", "Wetter", "schön"],
+        "keyWords": ["wenn", "Wetter", "schön", "spazieren"],
         "possibleAnswers": [
           "Wenn das Wetter schön ist, gehen wir spazieren",
           "Wir gehen raus, wenn das Wetter schön ist",
@@ -573,7 +573,7 @@
         "explanation": "'wenn' can mean 'if' or 'when' depending on context"
       },
       {
-        "keyWords": ["damit", "verstehen", "erklären"],
+        "keyWords": ["damit", "verstehen", "erklären", "nochmal"],
         "possibleAnswers": [
           "Ich erkläre es nochmal, damit du es verstehst",
           "Damit alle verstehen, spreche ich langsam",
@@ -603,7 +603,7 @@
         "explanation": "'schon mal' indicates past experience. 'gewesen' is past participle of 'sein'"
       },
       {
-        "keyWords": ["immer", "wenn", "regnen"],
+        "keyWords": ["immer", "wenn", "regnen", "Schirm"],
         "possibleAnswers": [
           "Immer wenn es regnet, bleibe ich zu Hause",
           "Ich nehme immer einen Schirm mit, wenn es regnet",
@@ -633,7 +633,7 @@
         "explanation": "'erst' indicates that one thing happens only after another is completed"
       },
       {
-        "keyWords": ["letztes", "Jahr", "gereist"],
+        "keyWords": ["letztes", "Jahr", "gereist", "viel"],
         "possibleAnswers": [
           "Letztes Jahr bin ich nach Italien gereist",
           "Ich bin letztes Jahr viel gereist",
@@ -678,7 +678,7 @@
         "explanation": "'zwar...aber' structure expresses concession with contrast"
       },
       {
-        "keyWords": ["falls", "Zeit", "haben"],
+        "keyWords": ["falls", "Zeit", "haben", "vorbei"],
         "possibleAnswers": [
           "Falls ich Zeit habe, komme ich vorbei",
           "Ruf mich an, falls du Zeit hast",
@@ -710,7 +710,7 @@
     ],
     "advanced": [
       {
-        "keyWords": ["hätte", "Zeit", "reisen"],
+        "keyWords": ["hätte", "Zeit", "reisen", "mehr"],
         "possibleAnswers": [
           "Hätte ich mehr Zeit, würde ich viel reisen",
           "Wenn ich mehr Zeit hätte, würde ich reisen"
@@ -724,7 +724,7 @@
         "explanation": "Subjunctive II expresses hypothetical or unreal situations"
       },
       {
-        "keyWords": ["nachdem", "gelesen", "verstehen"],
+        "keyWords": ["nachdem", "gelesen", "verstehen", "besser"],
         "possibleAnswers": [
           "Nachdem ich das Buch gelesen hatte, verstand ich es besser",
           "Nachdem er den Artikel gelesen hatte, konnte er mitreden",
@@ -874,7 +874,7 @@
         "explanation": "'trotzdem' shows doing something despite circumstances"
       },
       {
-        "keyWords": ["indem", "üben", "verbessern"],
+        "keyWords": ["indem", "üben", "verbessern", "täglich"],
         "possibleAnswers": [
           "Er verbessert sein Deutsch, indem er täglich übt",
           "Indem wir viel lesen, verbessern wir unseren Wortschatz",
