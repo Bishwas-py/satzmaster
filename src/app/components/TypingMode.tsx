@@ -50,7 +50,9 @@ export const TypingMode: React.FC<TypingModeProps> = ({
     const isCurrentWord = index === currentWordIndex;
     const isCompleted = index < typedWords.length - 1;
     const isCorrect = typedWord === word;
-    const shouldShowTranslation = isCompleted && isCorrect;
+    
+    // Show translation if word is completed correctly, OR if it's the current word and typed correctly
+    const shouldShowTranslation = (isCompleted && isCorrect) || (isCurrentWord && isCorrect && typedWord.length === word.length);
     
     let className = 'mx-1 ';
     
