@@ -69,8 +69,8 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
             const newMistakes = { ...prev };
             newMistakes[i] = (newMistakes[i] || 0) + 1;
             
-            // If this is the 4th mistake at this position, reveal it
-            if (newMistakes[i] === 4) {
+            // Only reveal if this is the 4th mistake AND no other character is already revealed
+            if (newMistakes[i] === 4 && revealedCharacters.size === 0) {
               // Start shake animation and reveal after
               setShakingCharacters(prevShaking => new Set(prevShaking).add(i));
               setTransitioningCharacters(prev => ({ ...prev, [i]: userInput[i] }));
@@ -91,7 +91,7 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
               }, 400);
             }
             // If this position is already revealed and user types wrong again, shake it
-            else if (newMistakes[i] > 4 || revealedCharacters.has(i)) {
+            else if (revealedCharacters.has(i)) {
               setShakingCharacters(prevShaking => new Set(prevShaking).add(i));
               setTransitioningCharacters(prev => ({ ...prev, [i]: userInput[i] }));
               
@@ -186,27 +186,84 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
     return "Translation not available";
   };
 
-  // Render the input with real-time validation styling
-  const renderValidationDisplay = () => {
-    if (!userInput) return null;
+  // Render Monkeytype-style text display for sentence builder
+  const renderMonkeytypeBuilder = () => {
+    if (!userInput) {
+      return (
+        <div className="text-3xl leading-relaxed font-mono text-gray-400 p-8">
+          <div className="text-center">
+            <div className="text-lg mb-2">Start typing your German sentence...</div>
+            <div className="text-base opacity-75">Use the keywords above as your guide</div>
+          </div>
+        </div>
+      );
+    }
 
     const bestMatch = getBestMatch(userInput);
-    const matchLength = getMatchLength(userInput.toLowerCase(), bestMatch.toLowerCase());
-
+    const userText = userInput;
+    
     return (
-      <div className="absolute inset-0 pointer-events-none font-mono text-2xl p-4 flex items-center z-5">
-        <div className="flex">
-          {/* Correct characters */}
-          <span className="text-green-700 bg-green-100 px-0.5 rounded">
-            {userInput.substring(0, matchLength)}
-          </span>
-          {/* Incorrect characters */}
-          {matchLength < userInput.length && (
-            <span className="text-red-700 bg-red-100 px-0.5 rounded">
-              {userInput.substring(matchLength)}
+      <div className="text-3xl leading-relaxed font-mono p-8 select-none">
+        {userText.split('').map((char, index) => {
+          let className = '';
+          let displayChar = char;
+          const isRevealed = revealedCharacters.has(index);
+          const isShaking = shakingCharacters.has(index);
+          const transitioningChar = transitioningCharacters[index];
+          
+          if (isShaking && transitioningChar) {
+            // Show the wrong character shaking in red
+            className = 'text-red-500 bg-red-500/20 animate-shake';
+            displayChar = transitioningChar;
+          } else if (isRevealed && index < bestMatch.length) {
+            // Show the correct character in blue for revealed positions
+            className = 'text-blue-500 bg-blue-500/20';
+            displayChar = bestMatch[index]; // Show correct character with original case
+          } else if (index < bestMatch.length && userText[index] === bestMatch[index]) {
+            // Correct character
+            className = 'text-green-500';
+          } else {
+            // Wrong character
+            className = 'text-red-500 bg-red-500/20';
+          }
+          
+          return (
+            <span key={index} className={className}>
+              {displayChar}
             </span>
-          )}
-        </div>
+          );
+        })}
+        
+        {/* Simple cursor */}
+        <span className="bg-yellow-400 text-yellow-400 animate-pulse">|</span>
+      </div>
+    );
+  };
+
+  // Render completed words with translations
+  const renderCompletedWords = () => {
+    if (!userInput) return null;
+
+    const words = userInput.split(' ');
+    const completedWords = words.slice(0, -1); // All words except the currently being typed
+    
+    return (
+      <div className="mt-4 flex flex-wrap gap-3">
+        {completedWords.map((word, index) => {
+          const translation = getWordTranslation(word);
+          if (translation === 'translation not found') return null;
+          
+          return (
+            <div key={index} className="text-center">
+              <div className="text-sm font-medium text-green-700 mb-1">
+                {word}
+              </div>
+              <div className="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded">
+                {translation}
+              </div>
+            </div>
+          );
+        })}
       </div>
     );
   };
@@ -277,79 +334,54 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
           </p>
         </div>
 
-        {/* Input Area with Real-time Validation */}
+        {/* Input Area with Monkeytype-style Display */}
         <div className="relative">
-          {/* Show validation preview above input */}
-          {userInput && (
-            <div className="mb-2 p-2 bg-gray-50 rounded border font-mono text-lg">
-              <div className="flex flex-wrap">
-                {userInput.split('').map((char, index) => {
-                  const bestMatch = getBestMatch(userInput);
-                  const correctText = bestMatch.toLowerCase();
-                  const userText = userInput.toLowerCase();
-                  const matchLength = getMatchLength(userText, correctText);
-                  const isCorrect = index < matchLength && userText[index] === correctText[index];
-                  const isRevealed = revealedCharacters.has(index);
-                  const isShaking = shakingCharacters.has(index);
-                  const transitioningChar = transitioningCharacters[index];
-
-                  let className = 'px-0.5 rounded mx-0.5 transition-all duration-300 ';
-                  let displayChar = char;
-
-                  if (isShaking && transitioningChar) {
-                    // Show the wrong character shaking in red
-                    className += 'text-red-700 bg-red-100 animate-shake font-bold ';
-                    displayChar = transitioningChar;
-                  } else if (isRevealed && !isCorrect && index < correctText.length) {
-                    // Show the correct character in blue for revealed positions
-                    className += 'text-blue-700 bg-blue-100 font-bold ';
-                    displayChar = bestMatch[index]; // Show correct character with original case
-                  } else if (isCorrect) {
-                    className += 'text-green-700 bg-green-100 ';
-                  } else {
-                    className += 'text-red-700 bg-red-100 ';
-                  }
-
-                  return (
-                    <span key={index} className={className}>
-                      {displayChar === ' ' ? '␣' : displayChar}
-                    </span>
-                  );
-                })}
+          {/* Clean Monkeytype-style Text Display */}
+          <div 
+            className="min-h-[180px] bg-white rounded-lg border border-gray-200 focus-within:border-gray-400 cursor-text mb-4 transition-colors"
+            onClick={() => inputRef.current?.focus()}
+          >
+            {/* Simple progress indicator */}
+            {userInput.length > 0 && (
+              <div className="absolute top-2 right-2 text-xs text-gray-500">
+                {userInput.length}
               </div>
-            </div>
-          )}
-
-          {/* Input field */}
-          <div className="relative">
-            {/* Actual input field */}
-            <input
-              ref={inputRef}
-              type="text"
-              value={userInput}
-              onChange={(e) => onInputChange(e.target.value)}
-              onKeyDown={onKeyPress}
-              onFocus={onInputFocus}
-              placeholder="Type your German sentence here..."
-              className="w-full text-2xl p-4 border-2 border-gray-400 focus:border-gray-700 focus:outline-none font-mono text-gray-900 placeholder-gray-500 shadow-sm"
-              disabled={isFinished}
-              autoFocus
-            />
+            )}
+            
+            {/* Monkeytype-style character display */}
+            {renderMonkeytypeBuilder()}
+            
+            {/* Completion overlay */}
+            {isFinished && (
+              <div className="absolute inset-0 bg-green-50 border border-green-400 rounded-lg flex flex-col items-center justify-center">
+                <span className="text-green-700 font-bold text-lg mb-2">
+                  {userInput}
+                </span>
+                <span className="text-green-600 text-base font-medium mb-2">
+                  {translateSentence(userInput)}
+                </span>
+                <span className="text-green-500 text-sm">
+                  Press Enter to continue →
+                </span>
+              </div>
+            )}
           </div>
 
-          {isFinished && (
-            <div className="absolute bottom-0 left-0 right-0 bg-green-50 border-2 border-green-400 rounded flex flex-col items-center justify-center p-4">
-              <span className="text-green-700 font-bold text-lg mb-1">
-                {userInput}
-              </span>
-              <span className="text-green-600 text-base font-medium mb-2">
-                {translateSentence(userInput)}
-              </span>
-              <span className="text-green-500 text-sm">
-                Press Enter to continue →
-              </span>
-            </div>
-          )}
+          {/* Show completed word translations */}
+          {renderCompletedWords()}
+
+          {/* Hidden input field for capturing keystrokes */}
+          <input
+            ref={inputRef}
+            type="text"
+            value={userInput}
+            onChange={(e) => onInputChange(e.target.value)}
+            onKeyDown={onKeyPress}
+            onFocus={onInputFocus}
+            className="absolute -left-9999px opacity-0"
+            disabled={isFinished}
+            autoFocus
+          />
 
           {isCorrect === false && (
             <div className="absolute bottom-0 left-0 right-0 bg-red-50 border-2 border-red-400 rounded flex items-center justify-center p-4">
@@ -366,6 +398,11 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
               </div>
             </div>
           )}
+        </div>
+
+        {/* Instructions */}
+        <div className="mt-4 text-sm text-gray-500 text-center">
+          Green = correct, red = wrong, blue = revealed
         </div>
 
         {/* Submit button */}

@@ -41,7 +41,7 @@ export const GermanWordGame = () => {
   const [completionTimeoutId, setCompletionTimeoutId] = useState<NodeJS.Timeout | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { wpm, accuracy } = useGameStats(userInput, startTime, errors);
+  const { wpm, accuracy } = useGameStats(userInput, startTime, errors, isFinished);
 
   // Initialize shuffled content when difficulty or mode changes
   useEffect(() => {

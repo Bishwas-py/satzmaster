@@ -27,7 +27,7 @@ export const TypingMode: React.FC<TypingModeProps> = ({
   onKeyPress,
   inputRef
 }) => {
-  // Auto-focus the input when component mounts or when not finished
+  // Auto-focus the hidden input when component mounts or when not finished
   React.useEffect(() => {
     if (!isFinished && inputRef.current) {
       const timeoutId = setTimeout(() => {
@@ -51,36 +51,77 @@ export const TypingMode: React.FC<TypingModeProps> = ({
     return germanToEnglishDictionary[cleanWord.toLowerCase()] || '?';
   };
 
-  // Render word with correct/incorrect styling and translation
-  const renderWord = (word: string, index: number) => {
-    const typedWord = typedWords[index] || '';
-    const isCurrentWord = index === currentWordIndex;
-    const isCompleted = index < typedWords.length - 1;
-    const isCorrect = typedWord === word;
-    
-    // Show translation if word is completed correctly, OR if it's the current word and typed correctly
-    const shouldShowTranslation = (isCompleted && isCorrect) || (isCurrentWord && isCorrect && typedWord.length === word.length);
-    
-    let className = 'mx-1 ';
-    
-    if (isCurrentWord) {
-      className += 'bg-yellow-200 text-gray-900 ';
-    } else if (isCompleted) {
-      className += isCorrect ? 'text-green-800 bg-green-100 ' : 'text-red-800 bg-red-100 ';
-    } else {
-      className += 'text-gray-800 ';
-    }
+  // Render character-by-character with Monkeytype-style feedback
+  const renderMonkeytypeText = () => {
+    const targetText = currentText.text;
+    const userText = userInput;
     
     return (
-      <div key={index} className="inline-block mx-1">
-        <span className={className + 'px-1 py-0.5 rounded'}>
-          {word}
-        </span>
-        {shouldShowTranslation && (
-          <div className="text-center text-sm text-blue-600 mt-1 font-normal">
-            {getWordTranslation(word)}
-          </div>
-        )}
+      <div className="text-3xl leading-relaxed font-mono">
+        {targetText.split('').map((char, index) => {
+          let className = 'relative ';
+          let displayChar = char;
+          
+          if (index < userText.length) {
+            // Character has been typed
+            if (userText[index] === char) {
+              // Correct character
+              className += 'text-green-600 bg-green-100 ';
+            } else {
+              // Wrong character
+              className += 'text-red-600 bg-red-200 ';
+            }
+          } else if (index === userText.length) {
+            // Current cursor position
+            className += 'text-gray-800 bg-yellow-300 animate-pulse ';
+          } else {
+            // Not yet typed
+            className += 'text-gray-400 ';
+          }
+          
+          // Handle spaces with visible indicator
+          if (char === ' ') {
+            return (
+              <span key={index} className={className + 'px-1'}>
+                {index === userText.length ? '⎵' : ' '}
+              </span>
+            );
+          }
+          
+          return (
+            <span key={index} className={className + 'px-0.5 rounded'}>
+              {displayChar}
+            </span>
+          );
+        })}
+      </div>
+    );
+  };
+
+  // Render word translations below completed words
+  const renderWordTranslations = () => {
+    const words = currentText.text.split(' ');
+    const userWords = userInput.split(' ');
+    
+    return (
+      <div className="mt-6 flex flex-wrap gap-4">
+        {words.map((word, index) => {
+          const userWord = userWords[index] || '';
+          const isWordComplete = userWords.length > index && userWords[index] === word;
+          
+          if (!isWordComplete) return null;
+          
+          return (
+            <div key={index} className="text-center">
+              <div className="text-sm font-medium text-green-700 mb-1">
+                {word}
+              </div>
+              <div className="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded">
+                {getWordTranslation(word)}
+              </div>
+            </div>
+          );
+        })}
       </div>
     );
   };
@@ -106,39 +147,56 @@ export const TypingMode: React.FC<TypingModeProps> = ({
 
       {/* Main Content Area */}
       <div className="bg-white border border-gray-300 p-8 shadow-sm">
-        {/* Text Display with Live Translations */}
-        <div className="text-3xl leading-relaxed mb-8 p-6 bg-gray-50 rounded min-h-[160px] flex items-start">
-          <div className="w-full">
-            <div className="flex flex-wrap items-start">
-              {targetWords.map((word, index) => renderWord(word, index))}
-            </div>
-          </div>
-        </div>
-
-        {/* Input Area */}
+        {/* Monkeytype-style Text Display */}
         <div className="relative">
-          <input
-            ref={inputRef}
-            type="text"
-            value={userInput}
-            onChange={(e) => onInputChange(e.target.value)}
-            onKeyDown={onKeyPress}
-            placeholder="Start typing the German text above..."
-            className="w-full text-2xl p-4 border-2 border-gray-400 focus:border-gray-700 focus:outline-none bg-white font-mono text-gray-900 placeholder-gray-500 shadow-sm"
-            disabled={isFinished}
-            autoFocus
-          />
-          
-          {isFinished && (
-            <div className="absolute inset-0 bg-green-50 border-2 border-green-400 rounded flex items-center justify-center">
-              <span className="text-green-700 font-bold">Perfect! ✓</span>
+          <div 
+            className="min-h-[200px] p-6 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300 focus-within:border-gray-500 cursor-text"
+            onClick={() => inputRef.current?.focus()}
+          >
+            {/* Click to focus instruction */}
+            {userInput.length === 0 && (
+              <div className="absolute top-2 left-2 text-xs text-gray-500">
+                Click here and start typing...
+              </div>
+            )}
+            
+            {/* Progress bar */}
+            <div className="absolute top-2 right-2 text-xs text-gray-500">
+              {userInput.length}/{currentText.text.length}
             </div>
-          )}
+            
+            {/* Monkeytype-style character display */}
+            <div className="pt-6">
+              {renderMonkeytypeText()}
+            </div>
+            
+            {/* Completion overlay */}
+            {isFinished && (
+              <div className="absolute inset-0 bg-green-50 border-2 border-green-400 rounded-lg flex items-center justify-center">
+                <span className="text-green-700 font-bold text-xl">Perfect! ✓</span>
+              </div>
+            )}
+          </div>
+          
+          {/* Word translations */}
+          {renderWordTranslations()}
         </div>
 
-        {/* Real-time Translation Hint */}
+        {/* Hidden input field for capturing keystrokes */}
+        <input
+          ref={inputRef}
+          type="text"
+          value={userInput}
+          onChange={(e) => onInputChange(e.target.value)}
+          onKeyDown={onKeyPress}
+          className="absolute -left-9999px opacity-0"
+          disabled={isFinished}
+          autoFocus
+        />
+
+        {/* Instructions */}
         <div className="mt-4 text-sm text-gray-600 text-center">
-          ✨ English translations appear below each word as you type them correctly
+          ✨ Type the German text above. Correct characters turn green, mistakes turn red.
         </div>
       </div>
     </>
