@@ -128,7 +128,48 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
     }
 
     // If no exact match, try lowercase (for words like Ich, Das, etc.)
-    return germanToEnglishDictionary[cleanWord.toLowerCase()] || 'translation not found';
+    if (germanToEnglishDictionary[cleanWord.toLowerCase()]) {
+      return germanToEnglishDictionary[cleanWord.toLowerCase()];
+    }
+
+    // Smart declension handling: try removing common German endings to find root forms
+    const tryRootForms = (word: string): string | null => {
+      const lowerWord = word.toLowerCase();
+      
+      // Common adjective endings to try removing
+      const adjectiveEndings = ['e', 'en', 'er', 'es', 'em'];
+      
+      for (const ending of adjectiveEndings) {
+        if (lowerWord.endsWith(ending) && lowerWord.length > ending.length + 2) {
+          const rootForm = lowerWord.slice(0, -ending.length);
+          if (germanToEnglishDictionary[rootForm]) {
+            return germanToEnglishDictionary[rootForm];
+          }
+        }
+      }
+      
+      // Try removing common noun endings for plurals and cases
+      const nounEndings = ['n', 's', 'en', 'er', 'ern'];
+      
+      for (const ending of nounEndings) {
+        if (lowerWord.endsWith(ending) && lowerWord.length > ending.length + 2) {
+          const rootForm = lowerWord.slice(0, -ending.length);
+          if (germanToEnglishDictionary[rootForm]) {
+            return germanToEnglishDictionary[rootForm];
+          }
+        }
+      }
+      
+      return null;
+    };
+
+    // Try to find root form
+    const rootTranslation = tryRootForms(cleanWord);
+    if (rootTranslation) {
+      return rootTranslation;
+    }
+
+    return 'translation not found';
   };
 
   const handleRetry = () => {
