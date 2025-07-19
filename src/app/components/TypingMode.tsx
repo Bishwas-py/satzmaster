@@ -41,7 +41,14 @@ export const TypingMode: React.FC<TypingModeProps> = ({
   const getWordTranslation = (germanWord: string): string => {
     // Remove punctuation for dictionary lookup
     const cleanWord = germanWord.replace(/[.,!?;:]$/, '');
-    return germanToEnglishDictionary[cleanWord] || '?';
+    
+    // First try exact case match (important for Sie vs sie, etc.)
+    if (germanToEnglishDictionary[cleanWord]) {
+      return germanToEnglishDictionary[cleanWord];
+    }
+    
+    // If no exact match, try lowercase (for words like Ich, Das, etc.)
+    return germanToEnglishDictionary[cleanWord.toLowerCase()] || '?';
   };
 
   // Render word with correct/incorrect styling and translation
