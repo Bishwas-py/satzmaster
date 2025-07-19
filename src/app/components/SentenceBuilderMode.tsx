@@ -12,6 +12,7 @@ interface SentenceBuilderModeProps {
   onInputChange: (value: string) => void;
   onKeyPress: (e: React.KeyboardEvent) => void;
   onSubmit: () => void;
+  onInputFocus?: () => void;
   inputRef: React.RefObject<HTMLInputElement | null>;
 }
 
@@ -24,6 +25,7 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
   onInputChange,
   onKeyPress,
   onSubmit,
+  onInputFocus,
   inputRef
 }) => {
   // Track character-level mistakes and revealed characters
@@ -327,6 +329,7 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
               value={userInput}
               onChange={(e) => onInputChange(e.target.value)}
               onKeyDown={onKeyPress}
+              onFocus={onInputFocus}
               placeholder="Type your German sentence here..."
               className="w-full text-2xl p-4 border-2 border-gray-400 focus:border-gray-700 focus:outline-none font-mono text-gray-900 placeholder-gray-500 shadow-sm"
               disabled={isFinished}
@@ -339,8 +342,11 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
               <span className="text-green-700 font-bold text-lg mb-1">
                 {userInput}
               </span>
-              <span className="text-green-600 text-base font-medium">
+              <span className="text-green-600 text-base font-medium mb-2">
                 {translateSentence(userInput)}
+              </span>
+              <span className="text-green-500 text-sm">
+                Press Enter to continue →
               </span>
             </div>
           )}

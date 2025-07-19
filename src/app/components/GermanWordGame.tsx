@@ -31,14 +31,17 @@ export const GermanWordGame = () => {
   const [showHints, setShowHints] = useState(false);
   const [errors, setErrors] = useState(0);
   const [startTime, setStartTime] = useState<number>(0);
+  const [activeTypingTime, setActiveTypingTime] = useState<number>(0);
+  const [lastTypingTime, setLastTypingTime] = useState<number>(0);
   const [isFinished, setIsFinished] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [shuffledTexts, setShuffledTexts] = useState<any[]>([]);
   const [shuffledChallenges, setShuffledChallenges] = useState<any[]>([]);
   const [completedCount, setCompletedCount] = useState(0);
+  const [completionTimeoutId, setCompletionTimeoutId] = useState<NodeJS.Timeout | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { wpm, accuracy } = useGameStats(userInput, startTime, errors);
+  const { wpm, accuracy } = useGameStats(userInput, activeTypingTime, errors);
 
   // Initialize shuffled content when difficulty or mode changes
   useEffect(() => {
@@ -56,7 +59,7 @@ export const GermanWordGame = () => {
     const handleGlobalKeydown = (e: KeyboardEvent) => {
       // Only handle global shortcuts when in game (not menu or result)
       if (gameState !== 'typing' && gameState !== 'builder') return;
-      
+
       if (e.ctrlKey && e.key === 'r') {
         e.preventDefault();
         resetCurrentSentence();
@@ -82,9 +85,9 @@ export const GermanWordGame = () => {
   const currentText = gameMode === 'typing' && shuffledTexts.length > 0
     ? shuffledTexts[currentTextIndex]
     : null;
-  
+
   const currentChallenge = gameMode === 'builder' && shuffledChallenges.length > 0
-    ? shuffledChallenges[currentTextIndex] 
+    ? shuffledChallenges[currentTextIndex]
     : null;
 
   const targetWords = currentText ? currentText.text.split(' ') : [];
@@ -108,40 +111,42 @@ export const GermanWordGame = () => {
     setCurrentWordIndex(0);
     setErrors(0);
     setStartTime(Date.now());
+    setActiveTypingTime(0);
+    setLastTypingTime(Date.now());
     setIsFinished(false);
     setIsCorrect(null);
     setShowHints(false);
     setCompletedCount(0);
-    
+
     // Shuffle content immediately when starting
     if (mode === 'typing') {
       setShuffledTexts(shuffleArray(germanTexts[selectedDifficulty]));
     } else {
       setShuffledChallenges(shuffleArray(sentenceBuilderChallenges[selectedDifficulty]));
     }
-    
+
     setTimeout(() => inputRef.current?.focus(), 100);
   };
 
   const checkSentenceBuilder = (input: string) => {
     if (!currentChallenge) return false;
-    
+
     // Normalize input: trim, lowercase, and normalize spaces
     const normalizedInput = input.trim().toLowerCase().replace(/\s+/g, ' ');
-    
+
     // Instead of checking for exact key words, just check against possible answers
     // This is better because German words have different forms (rennen -> rennt)
     const isExactMatch = currentChallenge.possibleAnswers.some((answer: { german: string; english: string }) => {
       const normalizedAnswer = answer.german.toLowerCase().trim().replace(/\s+/g, ' ');
       return normalizedInput === normalizedAnswer;
     });
-    
+
     return isExactMatch;
   };
 
   const getNextChallenge = () => {
     const maxIndex = gameMode === 'typing' ? shuffledTexts.length : shuffledChallenges.length;
-    
+
     if (currentTextIndex + 1 < maxIndex) {
       // Continue with next item in shuffled list
       setCurrentTextIndex(prev => prev + 1);
@@ -157,9 +162,21 @@ export const GermanWordGame = () => {
     }
   };
 
+  const handleInputFocus = () => {
+    // Reset timing when user focuses back to input (e.g., after a pause)
+    setLastTypingTime(Date.now());
+  };
+
   const handleInputChange = (value: string) => {
+    // Update active typing time (only when actually typing)
+    const now = Date.now();
+    if (!isFinished) {
+      setActiveTypingTime(prev => prev + (now - lastTypingTime));
+    }
+    setLastTypingTime(now);
+
     setUserInput(value);
-    
+
     if (gameMode === 'typing') {
       const targetText = currentText!.text;
       let errorCount = 0;
@@ -179,6 +196,9 @@ export const GermanWordGame = () => {
             setCurrentWordIndex(0);
             setIsFinished(false);
             setErrors(0);
+            // Reset timing for next sentence
+            setActiveTypingTime(0);
+            setLastTypingTime(Date.now());
             // Improved auto-focus with longer timeout
             setTimeout(() => inputRef.current?.focus(), 150);
           } else {
@@ -192,27 +212,40 @@ export const GermanWordGame = () => {
     }
   };
 
+  const proceedToNextChallenge = () => {
+    if (completionTimeoutId) {
+      clearTimeout(completionTimeoutId);
+      setCompletionTimeoutId(null);
+    }
+
+    if (getNextChallenge()) {
+      setUserInput('');
+      setIsFinished(false);
+      setIsCorrect(null);
+      setShowHints(false);
+      // Reset timing for next challenge
+      setActiveTypingTime(0);
+      setLastTypingTime(Date.now());
+      // Auto-focus the input for the next challenge
+      setTimeout(() => inputRef.current?.focus(), 200);
+    } else {
+      setGameState('result');
+    }
+  };
+
   const handleBuilderSubmit = () => {
     if (!currentChallenge) return;
-    
+
     const correct = checkSentenceBuilder(userInput);
     setIsCorrect(correct);
-    
+
     if (correct) {
       setIsFinished(true);
       setCompletedCount(prev => prev + 1);
-      setTimeout(() => {
-        if (getNextChallenge()) {
-          setUserInput('');
-          setIsFinished(false);
-          setIsCorrect(null);
-          setShowHints(false);
-          // Auto-focus the input for the next challenge
-          setTimeout(() => inputRef.current?.focus(), 200);
-        } else {
-          setGameState('result');
-        }
-      }, 2000);
+      const timeoutId = setTimeout(() => {
+        proceedToNextChallenge();
+      }, 5000);
+      setCompletionTimeoutId(timeoutId);
     }
   };
 
@@ -226,7 +259,10 @@ export const GermanWordGame = () => {
     }
     if (e.key === 'Enter' && gameMode === 'builder') {
       e.preventDefault();
-      if (isCorrect === false) {
+      if (isFinished) {
+        // Skip the completion display and proceed to next challenge
+        proceedToNextChallenge();
+      } else if (isCorrect === false) {
         setIsCorrect(null);
         setUserInput('');
         inputRef.current?.focus();
@@ -237,12 +273,19 @@ export const GermanWordGame = () => {
   };
 
   const resetCurrentSentence = () => {
+    if (completionTimeoutId) {
+      clearTimeout(completionTimeoutId);
+      setCompletionTimeoutId(null);
+    }
     setUserInput('');
     setCurrentWordIndex(0);
     setErrors(0);
     setIsFinished(false);
     setIsCorrect(null);
     setShowHints(false);
+    // Reset timing
+    setActiveTypingTime(0);
+    setLastTypingTime(Date.now());
     setTimeout(() => inputRef.current?.focus(), 100);
   };
 
@@ -253,6 +296,10 @@ export const GermanWordGame = () => {
   };
 
   const resetGame = () => {
+    if (completionTimeoutId) {
+      clearTimeout(completionTimeoutId);
+      setCompletionTimeoutId(null);
+    }
     setGameState('menu');
     setCompletedCount(0);
   };
@@ -335,6 +382,7 @@ export const GermanWordGame = () => {
             onKeyPress={handleKeyPress}
             onSubmit={handleBuilderSubmit}
             inputRef={inputRef}
+            onInputFocus={handleInputFocus}
           />
         )}
 

@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 
-export const useGameStats = (userInput: string, startTime: number, errors: number) => {
+export const useGameStats = (userInput: string, activeTypingTime: number, errors: number) => {
   const [wpm, setWpm] = useState(0);
   const [accuracy, setAccuracy] = useState(100);
 
   const calculateStats = useCallback(() => {
-    if (startTime === 0) return;
+    if (activeTypingTime === 0) return;
     
-    const timeElapsed = (Date.now() - startTime) / 1000 / 60; // minutes
+    const timeElapsed = activeTypingTime / 1000 / 60; // convert ms to minutes
     const wordsTyped = userInput.trim().split(' ').filter(word => word.length > 0).length;
     const currentWpm = Math.round(wordsTyped / Math.max(timeElapsed, 0.1));
     const totalChars = userInput.length;
@@ -15,7 +15,7 @@ export const useGameStats = (userInput: string, startTime: number, errors: numbe
     
     setWpm(currentWpm);
     setAccuracy(Math.max(currentAccuracy, 0));
-  }, [userInput, startTime, errors]);
+  }, [userInput, activeTypingTime, errors]);
 
   useEffect(() => {
     calculateStats();
