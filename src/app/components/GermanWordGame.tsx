@@ -131,8 +131,8 @@ export const GermanWordGame = () => {
     
     // Instead of checking for exact key words, just check against possible answers
     // This is better because German words have different forms (rennen -> rennt)
-    const isExactMatch = currentChallenge.possibleAnswers.some((answer: string) => {
-      const normalizedAnswer = answer.toLowerCase().trim().replace(/\s+/g, ' ');
+    const isExactMatch = currentChallenge.possibleAnswers.some((answer: { german: string; english: string }) => {
+      const normalizedAnswer = answer.german.toLowerCase().trim().replace(/\s+/g, ' ');
       return normalizedInput === normalizedAnswer;
     });
     

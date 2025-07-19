@@ -3,10 +3,22 @@
       {
         "keyWords": ["Hund", "rennen", "Park"],
         "possibleAnswers": [
-          "Der Hund rennt im Park",
-          "Ein Hund rennt im Park", 
-          "Mein Hund rennt im Park",
-          "Der kleine Hund rennt im Park"
+          {
+            "german": "Der Hund rennt im Park",
+            "english": "The dog runs in the park"
+          },
+          {
+            "german": "Ein Hund rennt im Park",
+            "english": "A dog runs in the park"
+          },
+          {
+            "german": "Mein Hund rennt im Park",
+            "english": "My dog runs in the park"
+          },
+          {
+            "german": "Der kleine Hund rennt im Park",
+            "english": "The small dog runs in the park"
+          }
         ],
         "hints": [
           "Use 'der/ein/mein' before Hund",
@@ -19,9 +31,18 @@
       {
         "keyWords": ["ich", "Buch", "lesen"],
         "possibleAnswers": [
-          "Ich lese ein Buch",
-          "Ich lese das Buch",
-          "Ich lese mein Buch"
+          {
+            "german": "Ich lese ein Buch",
+            "english": "I read a book"
+          },
+          {
+            "german": "Ich lese das Buch",
+            "english": "I read the book"
+          },
+          {
+            "german": "Ich lese mein Buch",
+            "english": "I read my book"
+          }
         ],
         "hints": [
           "Subject comes first",
@@ -34,9 +55,18 @@
       {
         "keyWords": ["Katze", "schlafen", "Sofa"],
         "possibleAnswers": [
-          "Die Katze schläft auf dem Sofa",
-          "Meine Katze schläft auf dem Sofa",
-          "Eine Katze schläft auf dem Sofa"
+          {
+            "german": "Die Katze schläft auf dem Sofa",
+            "english": "The cat sleeps on the sofa"
+          },
+          {
+            "german": "Meine Katze schläft auf dem Sofa",
+            "english": "My cat sleeps on the sofa"
+          },
+          {
+            "german": "Eine Katze schläft auf dem Sofa",
+            "english": "A cat sleeps on the sofa"
+          }
         ],
         "hints": [
           "Use 'die/meine/eine' with Katze",
@@ -49,9 +79,18 @@
       {
         "keyWords": ["Mädchen", "spielen", "Garten"],
         "possibleAnswers": [
-          "Das Mädchen spielt im Garten",
-          "Ein Mädchen spielt im Garten",
-          "Mein Mädchen spielt im Garten"
+          {
+            "german": "Das Mädchen spielt im Garten",
+            "english": "The girl plays in the garden"
+          },
+          {
+            "german": "Ein Mädchen spielt im Garten",
+            "english": "A girl plays in the garden"
+          },
+          {
+            "german": "Mein Mädchen spielt im Garten",
+            "english": "My girl plays in the garden"
+          }
         ],
         "hints": [
           "Mädchen is neuter (das)",
@@ -64,9 +103,18 @@
       {
         "keyWords": ["wir", "Musik", "hören", "schöne"],
         "possibleAnswers": [
-          "Wir hören Musik",
-          "Wir hören die Musik",
-          "Wir hören schöne Musik"
+          {
+            "german": "Wir hören Musik",
+            "english": "We listen to music"
+          },
+          {
+            "german": "Wir hören die Musik",
+            "english": "We listen to the music"
+          },
+          {
+            "german": "Wir hören schöne Musik",
+            "english": "We listen to beautiful music"
+          }
         ],
         "hints": [
           "No article needed for general 'music'",
@@ -79,9 +127,18 @@
       {
         "keyWords": ["Auto", "fahren", "Straße"],
         "possibleAnswers": [
-          "Das Auto fährt auf der Straße",
-          "Ein Auto fährt auf der Straße",
-          "Mein Auto fährt auf der Straße"
+          {
+            "german": "Das Auto fährt auf der Straße",
+            "english": "The car drives on the street"
+          },
+          {
+            "german": "Ein Auto fährt auf der Straße",
+            "english": "A car drives on the street"
+          },
+          {
+            "german": "Mein Auto fährt auf der Straße",
+            "english": "My car drives on the street"
+          }
         ],
         "hints": [
           "Auto is neuter (das)",
@@ -94,9 +151,18 @@
       {
         "keyWords": ["Kind", "trinken", "Milch"],
         "possibleAnswers": [
-          "Das Kind trinkt Milch",
-          "Ein Kind trinkt Milch",
-          "Mein Kind trinkt die Milch"
+          {
+            "german": "Das Kind trinkt Milch",
+            "english": "The child drinks milk"
+          },
+          {
+            "german": "Ein Kind trinkt Milch",
+            "english": "A child drinks milk"
+          },
+          {
+            "german": "Mein Kind trinkt die Milch",
+            "english": "My child drinks the milk"
+          }
         ],
         "hints": [
           "Kind is neuter (das)",
@@ -109,9 +175,18 @@
       {
         "keyWords": ["Lehrer", "sprechen", "Deutsch", "gut"],
         "possibleAnswers": [
-          "Der Lehrer spricht Deutsch",
-          "Ein Lehrer spricht Deutsch",
-          "Mein Lehrer spricht gut Deutsch"
+          {
+            "german": "Der Lehrer spricht Deutsch",
+            "english": "The teacher speaks German"
+          },
+          {
+            "german": "Ein Lehrer spricht Deutsch",
+            "english": "A teacher speaks German"
+          },
+          {
+            "german": "Mein Lehrer spricht gut Deutsch",
+            "english": "My teacher speaks good German"
+          }
         ],
         "hints": [
           "Lehrer is masculine (der)",
@@ -124,9 +199,18 @@
       {
         "keyWords": ["Frau", "kaufen", "Brot", "frisches"],
         "possibleAnswers": [
-          "Die Frau kauft Brot",
-          "Eine Frau kauft das Brot",
-          "Meine Frau kauft frisches Brot"
+          {
+            "german": "Die Frau kauft Brot",
+            "english": "The woman buys bread"
+          },
+          {
+            "german": "Eine Frau kauft das Brot",
+            "english": "A woman buys the bread"
+          },
+          {
+            "german": "Meine Frau kauft frisches Brot",
+            "english": "My woman buys fresh bread"
+          }
         ],
         "hints": [
           "Frau is feminine (die)",
@@ -139,9 +223,18 @@
       {
         "keyWords": ["Student", "lernen", "Bibliothek"],
         "possibleAnswers": [
-          "Der Student lernt in der Bibliothek",
-          "Ein Student lernt in der Bibliothek",
-          "Mein Student lernt in der Bibliothek"
+          {
+            "german": "Der Student lernt in der Bibliothek",
+            "english": "The student studies in the library"
+          },
+          {
+            "german": "Ein Student lernt in der Bibliothek",
+            "english": "A student studies in the library"
+          },
+          {
+            "german": "Mein Student lernt in der Bibliothek",
+            "english": "My student studies in the library"
+          }
         ],
         "hints": [
           "Student is masculine (der)",
@@ -154,9 +247,18 @@
       {
         "keyWords": ["Vogel", "fliegen", "Himmel", "viele"],
         "possibleAnswers": [
-          "Der Vogel fliegt am Himmel",
-          "Ein Vogel fliegt am Himmel",
-          "Viele Vögel fliegen am Himmel"
+          {
+            "german": "Der Vogel fliegt am Himmel",
+            "english": "The bird flies in the sky"
+          },
+          {
+            "german": "Ein Vogel fliegt am Himmel",
+            "english": "A bird flies in the sky"
+          },
+          {
+            "german": "Viele Vögel fliegen am Himmel",
+            "english": "Many birds fly in the sky"
+          }
         ],
         "hints": [
           "Vogel is masculine (der)",
@@ -169,9 +271,18 @@
       {
         "keyWords": ["Tisch", "stehen", "Küche"],
         "possibleAnswers": [
-          "Der Tisch steht in der Küche",
-          "Ein Tisch steht in der Küche",
-          "Mein Tisch steht in der Küche"
+          {
+            "german": "Der Tisch steht in der Küche",
+            "english": "The table stands in the kitchen"
+          },
+          {
+            "german": "Ein Tisch steht in der Küche",
+            "english": "A table stands in the kitchen"
+          },
+          {
+            "german": "Mein Tisch steht in der Küche",
+            "english": "My table stands in the kitchen"
+          }
         ],
         "hints": [
           "Tisch is masculine (der)",
@@ -184,9 +295,18 @@
       {
         "keyWords": ["Sonne", "scheinen", "hell", "heute"],
         "possibleAnswers": [
-          "Die Sonne scheint hell",
-          "Heute scheint die Sonne hell",
-          "Die Sonne scheint sehr hell"
+          {
+            "german": "Die Sonne scheint hell",
+            "english": "The sun shines bright"
+          },
+          {
+            "german": "Heute scheint die Sonne hell",
+            "english": "Today the sun shines bright"
+          },
+          {
+            "german": "Die Sonne scheint sehr hell",
+            "english": "The sun shines very bright"
+          }
         ],
         "hints": [
           "Sonne is feminine (die)",
@@ -199,9 +319,18 @@
       {
         "keyWords": ["Junge", "schwimmen", "See", "gern"],
         "possibleAnswers": [
-          "Der Junge schwimmt im See",
-          "Ein Junge schwimmt im See",
-          "Mein Junge schwimmt gern im See"
+          {
+            "german": "Der Junge schwimmt im See",
+            "english": "The boy swims in the lake"
+          },
+          {
+            "german": "Ein Junge schwimmt im See",
+            "english": "A boy swims in the lake"
+          },
+          {
+            "german": "Mein Junge schwimmt gern im See",
+            "english": "My boy swims gladly in the lake"
+          }
         ],
         "hints": [
           "Junge is masculine (der)",
@@ -214,9 +343,18 @@
       {
         "keyWords": ["Blume", "wachsen", "Garten", "schöne"],
         "possibleAnswers": [
-          "Die Blume wächst im Garten",
-          "Blumen wachsen im Garten",
-          "Eine schöne Blume wächst im Garten"
+          {
+            "german": "Die Blume wächst im Garten",
+            "english": "The flower grows in the garden"
+          },
+          {
+            "german": "Blumen wachsen im Garten",
+            "english": "Flowers grow in the garden"
+          },
+          {
+            "german": "Eine schöne Blume wächst im Garten",
+            "english": "A beautiful flower grows in the garden"
+          }
         ],
         "hints": [
           "Blume is feminine (die)",
@@ -229,9 +367,18 @@
       {
         "keyWords": ["Oma", "backen", "Kuchen", "heute", "leckeren"],
         "possibleAnswers": [
-          "Die Oma backt einen Kuchen",
-          "Meine Oma backt Kuchen",
-          "Oma backt heute einen leckeren Kuchen"
+          {
+            "german": "Die Oma backt einen Kuchen",
+            "english": "The grandmother bakes a cake"
+          },
+          {
+            "german": "Meine Oma backt Kuchen",
+            "english": "My grandmother bakes cakes"
+          },
+          {
+            "german": "Oma backt heute einen leckeren Kuchen",
+            "english": "Grandmother bakes a delicious cake today"
+          }
         ],
         "hints": [
           "Oma is feminine (die)",
@@ -244,9 +391,18 @@
       {
         "keyWords": ["Fisch", "schwimmen", "Wasser", "bunter"],
         "possibleAnswers": [
-          "Der Fisch schwimmt im Wasser",
-          "Fische schwimmen im Wasser",
-          "Ein bunter Fisch schwimmt im klaren Wasser"
+          {
+            "german": "Der Fisch schwimmt im Wasser",
+            "english": "The fish swims in the water"
+          },
+          {
+            "german": "Fische schwimmen im Wasser",
+            "english": "Fish swim in the water"
+          },
+          {
+            "german": "Ein bunter Fisch schwimmt im klaren Wasser",
+            "english": "A colorful fish swims in clear water"
+          }
         ],
         "hints": [
           "Fisch is masculine (der)",
@@ -259,9 +415,18 @@
       {
         "keyWords": ["Vater", "arbeiten", "Büro", "heute"],
         "possibleAnswers": [
-          "Der Vater arbeitet im Büro",
-          "Mein Vater arbeitet im Büro",
-          "Vater arbeitet heute im Büro"
+          {
+            "german": "Der Vater arbeitet im Büro",
+            "english": "The father works in the office"
+          },
+          {
+            "german": "Mein Vater arbeitet im Büro",
+            "english": "My father works in the office"
+          },
+          {
+            "german": "Vater arbeitet heute im Büro",
+            "english": "Father works in the office today"
+          }
         ],
         "hints": [
           "Vater is masculine (der)",
@@ -274,9 +439,18 @@
       {
         "keyWords": ["Mutter", "kochen", "Küche", "heute"],
         "possibleAnswers": [
-          "Die Mutter kocht in der Küche",
-          "Meine Mutter kocht in der Küche",
-          "Mutter kocht heute in der Küche"
+          {
+            "german": "Die Mutter kocht in der Küche",
+            "english": "The mother cooks in the kitchen"
+          },
+          {
+            "german": "Meine Mutter kocht in der Küche",
+            "english": "My mother cooks in the kitchen"
+          },
+          {
+            "german": "Mutter kocht heute in der Küche",
+            "english": "Mother cooks in the kitchen today"
+          }
         ],
         "hints": [
           "Mutter is feminine (die)",
@@ -289,9 +463,18 @@
       {
         "keyWords": ["Zug", "fahren", "Bahnhof", "schnelle"],
         "possibleAnswers": [
-          "Der Zug fährt zum Bahnhof",
-          "Ein Zug fährt vom Bahnhof",
-          "Der schnelle Zug fährt zum Hauptbahnhof"
+          {
+            "german": "Der Zug fährt zum Bahnhof",
+            "english": "The train goes to the station"
+          },
+          {
+            "german": "Ein Zug fährt vom Bahnhof",
+            "english": "A train goes from the station"
+          },
+          {
+            "german": "Der schnelle Zug fährt zum Hauptbahnhof",
+            "english": "The fast train goes to the main station"
+          }
         ],
         "hints": [
           "Zug is masculine (der)",
@@ -304,9 +487,18 @@
       {
         "keyWords": ["Fenster", "öffnen", "Luft", "frische"],
         "possibleAnswers": [
-          "Ich öffne das Fenster für frische Luft",
-          "Das Fenster ist geöffnet für Luft",
-          "Wir öffnen die Fenster wegen der Luft"
+          {
+            "german": "Ich öffne das Fenster für frische Luft",
+            "english": "I open the window for fresh air"
+          },
+          {
+            "german": "Das Fenster ist geöffnet für Luft",
+            "english": "The window is open for air"
+          },
+          {
+            "german": "Wir öffnen die Fenster wegen der Luft",
+            "english": "We open the windows because of the air"
+          }
         ],
         "hints": [
           "Fenster is neuter (das)",
@@ -319,9 +511,18 @@
       {
         "keyWords": ["Schnee", "fallen", "Winter", "heute", "viel"],
         "possibleAnswers": [
-          "Der Schnee fällt im Winter",
-          "Im Winter fällt Schnee",
-          "Heute fällt viel Schnee"
+          {
+            "german": "Der Schnee fällt im Winter",
+            "english": "The snow falls in winter"
+          },
+          {
+            "german": "Im Winter fällt Schnee",
+            "english": "In winter snow falls"
+          },
+          {
+            "german": "Heute fällt viel Schnee",
+            "english": "Today it snows a lot"
+          }
         ],
         "hints": [
           "Schnee is masculine (der)",
@@ -334,9 +535,18 @@
       {
         "keyWords": ["Bruder", "spielen", "Fußball", "gern", "heute"],
         "possibleAnswers": [
-          "Mein Bruder spielt Fußball",
-          "Der Bruder spielt gern Fußball",
-          "Bruder spielt heute Fußball"
+          {
+            "german": "Mein Bruder spielt Fußball",
+            "english": "My brother plays football"
+          },
+          {
+            "german": "Der Bruder spielt gern Fußball",
+            "english": "The brother plays football gladly"
+          },
+          {
+            "german": "Bruder spielt heute Fußball",
+            "english": "Brother plays football today"
+          }
         ],
         "hints": [
           "Bruder is masculine (der)",
@@ -349,9 +559,18 @@
       {
         "keyWords": ["Schwester", "malen", "Bild", "schönes"],
         "possibleAnswers": [
-          "Die Schwester malt ein Bild",
-          "Meine Schwester malt Bilder",
-          "Schwester malt ein schönes Bild"
+          {
+            "german": "Die Schwester malt ein Bild",
+            "english": "The sister paints a picture"
+          },
+          {
+            "german": "Meine Schwester malt Bilder",
+            "english": "My sister paints pictures"
+          },
+          {
+            "german": "Schwester malt ein schönes Bild",
+            "english": "Sister paints a beautiful picture"
+          }
         ],
         "hints": [
           "Schwester is feminine (die)",
@@ -366,9 +585,18 @@
       {
         "keyWords": ["gestern", "Film", "sehen", "einen"],
         "possibleAnswers": [
-          "Gestern habe ich einen Film gesehen",
-          "Ich habe gestern einen Film gesehen",
-          "Gestern haben wir einen Film gesehen"
+          {
+            "german": "Gestern habe ich einen Film gesehen",
+            "english": "I watched a movie yesterday"
+          },
+          {
+            "german": "Ich habe gestern einen Film gesehen",
+            "english": "I watched a movie yesterday"
+          },
+          {
+            "german": "Gestern haben wir einen Film gesehen",
+            "english": "We watched a movie yesterday"
+          }
         ],
         "hints": [
           "Use perfect tense (haben + past participle)",
@@ -381,8 +609,14 @@
       {
         "keyWords": ["weil", "müde", "schlafen"],
         "possibleAnswers": [
-          "Weil ich müde bin, gehe ich schlafen",
-          "Ich gehe schlafen, weil ich müde bin"
+          {
+            "german": "Weil ich müde bin, gehe ich schlafen",
+            "english": "Because I am tired, I go to sleep"
+          },
+          {
+            "german": "Ich gehe schlafen, weil ich müde bin",
+            "english": "I go to sleep, because I am tired"
+          }
         ],
         "hints": [
           "'weil' sends verb to end of clause",
@@ -395,9 +629,18 @@
       {
         "keyWords": ["können", "morgen", "kommen"],
         "possibleAnswers": [
-          "Ich kann morgen nicht kommen",
-          "Kannst du morgen kommen?",
-          "Wir können morgen kommen"
+          {
+            "german": "Ich kann morgen nicht kommen",
+            "english": "I cannot come tomorrow"
+          },
+          {
+            "german": "Kannst du morgen kommen?",
+            "english": "Can you come tomorrow?"
+          },
+          {
+            "german": "Wir können morgen kommen",
+            "english": "We can come tomorrow"
+          }
         ],
         "hints": [
           "Modal verb: kann, kannst, können",
@@ -410,9 +653,18 @@
       {
         "keyWords": ["haben", "Hunger", "essen"],
         "possibleAnswers": [
-          "Ich habe Hunger und möchte essen",
-          "Weil ich Hunger habe, will ich essen",
-          "Da ich Hunger habe, gehe ich essen"
+          {
+            "german": "Ich habe Hunger und möchte essen",
+            "english": "I am hungry and want to eat"
+          },
+          {
+            "german": "Weil ich Hunger habe, will ich essen",
+            "english": "Because I am hungry, I want to eat"
+          },
+          {
+            "german": "Da ich Hunger habe, gehe ich essen",
+            "english": "Because I am hungry, I go to eat"
+          }
         ],
         "hints": [
           "'Hunger haben' = to be hungry",
@@ -425,9 +677,18 @@
       {
         "keyWords": ["seit", "Jahr", "wohnen", "einem"],
         "possibleAnswers": [
-          "Ich wohne seit einem Jahr hier",
-          "Seit einem Jahr wohnen wir hier",
-          "Er wohnt seit einem Jahr in Berlin"
+          {
+            "german": "Ich wohne seit einem Jahr hier",
+            "english": "I have been living here for a year"
+          },
+          {
+            "german": "Seit einem Jahr wohnen wir hier",
+            "english": "We have been living here for a year"
+          },
+          {
+            "german": "Er wohnt seit einem Jahr in Berlin",
+            "english": "He has been living in Berlin for a year"
+          }
         ],
         "hints": [
           "'seit' requires dative case",
@@ -440,9 +701,18 @@
       {
         "keyWords": ["müssen", "Arzt", "gehen"],
         "possibleAnswers": [
-          "Ich muss zum Arzt gehen",
-          "Du musst zum Arzt gehen",
-          "Wir müssen zum Arzt gehen"
+          {
+            "german": "Ich muss zum Arzt gehen",
+            "english": "I have to go to the doctor"
+          },
+          {
+            "german": "Du musst zum Arzt gehen",
+            "english": "You have to go to the doctor"
+          },
+          {
+            "german": "Wir müssen zum Arzt gehen",
+            "english": "We have to go to the doctor"
+          }
         ],
         "hints": [
           "Modal verb: muss, musst, müssen",
@@ -455,9 +725,18 @@
       {
         "keyWords": ["während", "Regen", "bleiben", "drinnen"],
         "possibleAnswers": [
-          "Während es regnet, bleiben wir drinnen",
-          "Wir bleiben drinnen, während es regnet",
-          "Während des Regens bleiben wir zu Hause"
+          {
+            "german": "Während es regnet, bleiben wir drinnen",
+            "english": "While it is raining, we stay indoors"
+          },
+          {
+            "german": "Wir bleiben drinnen, während es regnet",
+            "english": "We stay indoors, while it is raining"
+          },
+          {
+            "german": "Während des Regens bleiben wir zu Hause",
+            "english": "While it is raining, we stay at home"
+          }
         ],
         "hints": [
           "'während' with verb = while doing",
@@ -470,9 +749,18 @@
       {
         "keyWords": ["nachdem", "Arbeit", "entspannen", "getan"],
         "possibleAnswers": [
-          "Nachdem ich gearbeitet habe, entspanne ich mich",
-          "Ich entspanne mich, nachdem ich gearbeitet habe",
-          "Nachdem die Arbeit getan ist, entspannen wir uns"
+          {
+            "german": "Nachdem ich gearbeitet habe, entspanne ich mich",
+            "english": "After I have worked, I relax myself"
+          },
+          {
+            "german": "Ich entspanne mich, nachdem ich gearbeitet habe",
+            "english": "I relax myself, after I have worked"
+          },
+          {
+            "german": "Nachdem die Arbeit getan ist, entspannen wir uns",
+            "english": "After the work is done, we relax ourselves"
+          }
         ],
         "hints": [
           "'nachdem' requires perfect tense",
@@ -485,9 +773,18 @@
       {
         "keyWords": ["obwohl", "kalt", "schwimmen"],
         "possibleAnswers": [
-          "Obwohl es kalt ist, gehen wir schwimmen",
-          "Wir gehen schwimmen, obwohl es kalt ist",
-          "Obwohl das Wetter kalt ist, schwimmen wir"
+          {
+            "german": "Obwohl es kalt ist, gehen wir schwimmen",
+            "english": "Although it is cold, we go swimming"
+          },
+          {
+            "german": "Wir gehen schwimmen, obwohl es kalt ist",
+            "english": "We go swimming, although it is cold"
+          },
+          {
+            "german": "Obwohl das Wetter kalt ist, schwimmen wir",
+            "english": "Although the weather is cold, we swim"
+          }
         ],
         "hints": [
           "'obwohl' = although/even though",
@@ -500,9 +797,18 @@
       {
         "keyWords": ["bevor", "ausgehen", "anziehen", "schön"],
         "possibleAnswers": [
-          "Bevor wir ausgehen, ziehe ich mich an",
-          "Ich ziehe mich an, bevor wir ausgehen",
-          "Bevor sie ausgeht, zieht sie sich schön an"
+          {
+            "german": "Bevor wir ausgehen, ziehe ich mich an",
+            "english": "Before we go out, I put on my clothes"
+          },
+          {
+            "german": "Ich ziehe mich an, bevor wir ausgehen",
+            "english": "I put on my clothes, before we go out"
+          },
+          {
+            "german": "Bevor sie ausgeht, zieht sie sich schön an",
+            "english": "Before she goes out, she puts on her clothes nicely"
+          }
         ],
         "hints": [
           "'bevor' = before",
@@ -515,9 +821,18 @@
       {
         "keyWords": ["sollten", "früh", "aufstehen"],
         "possibleAnswers": [
-          "Wir sollten früh aufstehen",
-          "Du solltest früher aufstehen",
-          "Man sollte früh aufstehen"
+          {
+            "german": "Wir sollten früh aufstehen",
+            "english": "We should get up early"
+          },
+          {
+            "german": "Du solltest früher aufstehen",
+            "english": "You should get up earlier"
+          },
+          {
+            "german": "Man sollte früh aufstehen",
+            "english": "One should get up early"
+          }
         ],
         "hints": [
           "Modal verb: sollte, solltest, sollten",
@@ -530,9 +845,18 @@
       {
         "keyWords": ["dürfen", "nicht", "rauchen"],
         "possibleAnswers": [
-          "Hier darf man nicht rauchen",
-          "Du darfst hier nicht rauchen",
-          "In diesem Gebäude dürfen Sie nicht rauchen"
+          {
+            "german": "Hier darf man nicht rauchen",
+            "english": "You are not allowed to smoke here"
+          },
+          {
+            "german": "Du darfst hier nicht rauchen",
+            "english": "You are not allowed to smoke here"
+          },
+          {
+            "german": "In diesem Gebäude dürfen Sie nicht rauchen",
+            "english": "You are not allowed to smoke in this building"
+          }
         ],
         "hints": [
           "Modal verb: darf, darfst, dürfen",
@@ -545,9 +869,18 @@
       {
         "keyWords": ["werden", "Lehrer", "studieren", "deshalb"],
         "possibleAnswers": [
-          "Ich werde Lehrer werden, deshalb studiere ich",
-          "Um Lehrer zu werden, muss ich studieren",
-          "Nach dem Studium werde ich Lehrer"
+          {
+            "german": "Ich werde Lehrer werden, deshalb studiere ich",
+            "english": "I will become a teacher, therefore I study"
+          },
+          {
+            "german": "Um Lehrer zu werden, muss ich studieren",
+            "english": "To become a teacher, I must study"
+          },
+          {
+            "german": "Nach dem Studium werde ich Lehrer",
+            "english": "After studying, I will become a teacher"
+          }
         ],
         "hints": [
           "'werden' = to become",
@@ -560,9 +893,18 @@
       {
         "keyWords": ["wenn", "Wetter", "schön", "spazieren"],
         "possibleAnswers": [
-          "Wenn das Wetter schön ist, gehen wir spazieren",
-          "Wir gehen raus, wenn das Wetter schön ist",
-          "Wenn es schön wird, fahren wir ins Grüne"
+          {
+            "german": "Wenn das Wetter schön ist, gehen wir spazieren",
+            "english": "If the weather is nice, we go for a walk"
+          },
+          {
+            "german": "Wir gehen raus, wenn das Wetter schön ist",
+            "english": "We go out, if the weather is nice"
+          },
+          {
+            "german": "Wenn es schön wird, fahren wir ins Grüne",
+            "english": "If it gets nice, we go to the green"
+          }
         ],
         "hints": [
           "'wenn' = when/if",
@@ -575,9 +917,18 @@
       {
         "keyWords": ["damit", "verstehen", "erklären", "nochmal"],
         "possibleAnswers": [
-          "Ich erkläre es nochmal, damit du es verstehst",
-          "Damit alle verstehen, spreche ich langsam",
-          "Er schreibt es auf, damit sie es besser versteht"
+          {
+            "german": "Ich erkläre es nochmal, damit du es verstehst",
+            "english": "I explain it again, so that you understand"
+          },
+          {
+            "german": "Damit alle verstehen, spreche ich langsam",
+            "english": "So that everyone understands, I speak slowly"
+          },
+          {
+            "german": "Er schreibt es auf, damit sie es besser versteht",
+            "english": "He writes it down, so that she understands it better"
+          }
         ],
         "hints": [
           "'damit' = so that",
@@ -590,9 +941,18 @@
       {
         "keyWords": ["schon", "mal", "gewesen"],
         "possibleAnswers": [
-          "Ich bin schon mal in Berlin gewesen",
-          "Bist du schon mal dort gewesen?",
-          "Wir sind schon mehrmals da gewesen"
+          {
+            "german": "Ich bin schon mal in Berlin gewesen",
+            "english": "I have been to Berlin once"
+          },
+          {
+            "german": "Bist du schon mal dort gewesen?",
+            "english": "Have you been there before?"
+          },
+          {
+            "german": "Wir sind schon mehrmals da gewesen",
+            "english": "We have been there several times"
+          }
         ],
         "hints": [
           "'schon mal' = already once",
@@ -605,9 +965,18 @@
       {
         "keyWords": ["immer", "wenn", "regnen", "Schirm"],
         "possibleAnswers": [
-          "Immer wenn es regnet, bleibe ich zu Hause",
-          "Ich nehme immer einen Schirm mit, wenn es regnet",
-          "Immer wenn es regnet, wird es kalt"
+          {
+            "german": "Immer wenn es regnet, bleibe ich zu Hause",
+            "english": "Whenever it rains, I stay at home"
+          },
+          {
+            "german": "Ich nehme immer einen Schirm mit, wenn es regnet",
+            "english": "I always take an umbrella with me, when it rains"
+          },
+          {
+            "german": "Immer wenn es regnet, wird es kalt",
+            "english": "Whenever it rains, it gets cold"
+          }
         ],
         "hints": [
           "'immer wenn' = whenever",
@@ -620,9 +989,18 @@
       {
         "keyWords": ["erst", "fertig", "gehen"],
         "possibleAnswers": [
-          "Erst wenn ich fertig bin, gehe ich nach Hause",
-          "Ich gehe erst nach Hause, wenn ich fertig bin",
-          "Erst nach der Arbeit gehe ich einkaufen"
+          {
+            "german": "Erst wenn ich fertig bin, gehe ich nach Hause",
+            "english": "Only when I am finished, do I go home"
+          },
+          {
+            "german": "Ich gehe erst nach Hause, wenn ich fertig bin",
+            "english": "I go home only when I am finished"
+          },
+          {
+            "german": "Erst nach der Arbeit gehe ich einkaufen",
+            "english": "Only after the work, do I go shopping"
+          }
         ],
         "hints": [
           "'erst' = only then/not until",
@@ -635,9 +1013,18 @@
       {
         "keyWords": ["letztes", "Jahr", "gereist", "viel"],
         "possibleAnswers": [
-          "Letztes Jahr bin ich nach Italien gereist",
-          "Ich bin letztes Jahr viel gereist",
-          "Letztes Jahr sind wir nach Spanien gereist"
+          {
+            "german": "Letztes Jahr bin ich nach Italien gereist",
+            "english": "Last year I went to Italy"
+          },
+          {
+            "german": "Ich bin letztes Jahr viel gereist",
+            "english": "I have been traveling a lot last year"
+          },
+          {
+            "german": "Letztes Jahr sind wir nach Spanien gereist",
+            "english": "Last year we went to Spain"
+          }
         ],
         "hints": [
           "'letztes Jahr' = last year",
@@ -650,9 +1037,18 @@
       {
         "keyWords": ["bis", "spät", "arbeiten"],
         "possibleAnswers": [
-          "Ich arbeite bis spät in die Nacht",
-          "Bis spät abends arbeitet er im Büro",
-          "Wir müssen bis spät arbeiten"
+          {
+            "german": "Ich arbeite bis spät in die Nacht",
+            "english": "I work until late at night"
+          },
+          {
+            "german": "Bis spät abends arbeitet er im Büro",
+            "english": "Until late at night, he works in the office"
+          },
+          {
+            "german": "Wir müssen bis spät arbeiten",
+            "english": "We have to work until late"
+          }
         ],
         "hints": [
           "'bis' = until",
@@ -665,9 +1061,18 @@
       {
         "keyWords": ["zwar", "aber", "trotzdem"],
         "possibleAnswers": [
-          "Ich bin zwar müde, aber ich arbeite trotzdem",
-          "Es ist zwar kalt, aber schön",
-          "Zwar regnet es, aber wir gehen trotzdem spazieren"
+          {
+            "german": "Ich bin zwar müde, aber ich arbeite trotzdem",
+            "english": "I am tired, but I work anyway"
+          },
+          {
+            "german": "Es ist zwar kalt, aber schön",
+            "english": "It is cold, but nice"
+          },
+          {
+            "german": "Zwar regnet es, aber wir gehen trotzdem spazieren",
+            "english": "Although it is raining, we go for a walk anyway"
+          }
         ],
         "hints": [
           "'zwar...aber' = although...but",
@@ -680,9 +1085,18 @@
       {
         "keyWords": ["falls", "Zeit", "haben", "vorbei"],
         "possibleAnswers": [
-          "Falls ich Zeit habe, komme ich vorbei",
-          "Ruf mich an, falls du Zeit hast",
-          "Falls wir Zeit haben, gehen wir ins Kino"
+          {
+            "german": "Falls ich Zeit habe, komme ich vorbei",
+            "english": "If I have time, I will come by"
+          },
+          {
+            "german": "Ruf mich an, falls du Zeit hast",
+            "english": "Call me if you have time"
+          },
+          {
+            "german": "Falls wir Zeit haben, gehen wir ins Kino",
+            "english": "If we have time, we will go to the cinema"
+          }
         ],
         "hints": [
           "'falls' = in case/if",
@@ -695,9 +1109,18 @@
       {
         "keyWords": ["soweit", "ich", "weiß"],
         "possibleAnswers": [
-          "Soweit ich weiß, kommt er heute",
-          "Das ist soweit ich weiß richtig",
-          "Soweit ich weiß, ist das Restaurant geschlossen"
+          {
+            "german": "Soweit ich weiß, kommt er heute",
+            "english": "As far as I know, he will come today"
+          },
+          {
+            "german": "Das ist soweit ich weiß richtig",
+            "english": "This is as far as I know correct"
+          },
+          {
+            "german": "Soweit ich weiß, ist das Restaurant geschlossen",
+            "english": "As far as I know, the restaurant is closed"
+          }
         ],
         "hints": [
           "'soweit ich weiß' = as far as I know",
@@ -712,8 +1135,14 @@
       {
         "keyWords": ["hätte", "Zeit", "reisen", "mehr"],
         "possibleAnswers": [
-          "Hätte ich mehr Zeit, würde ich viel reisen",
-          "Wenn ich mehr Zeit hätte, würde ich reisen"
+          {
+            "german": "Hätte ich mehr Zeit, würde ich viel reisen",
+            "english": "If I had more time, I would travel a lot"
+          },
+          {
+            "german": "Wenn ich mehr Zeit hätte, würde ich reisen",
+            "english": "If I had more time, I would travel"
+          }
         ],
         "hints": [
           "Subjunctive II for hypothetical situations",
@@ -726,9 +1155,18 @@
       {
         "keyWords": ["nachdem", "gelesen", "verstehen", "besser"],
         "possibleAnswers": [
-          "Nachdem ich das Buch gelesen hatte, verstand ich es besser",
-          "Nachdem er den Artikel gelesen hatte, konnte er mitreden",
-          "Sie verstand den Film, nachdem sie das Buch gelesen hatte"
+          {
+            "german": "Nachdem ich das Buch gelesen hatte, verstand ich es besser",
+            "english": "After I had read the book, I understood it better"
+          },
+          {
+            "german": "Nachdem er den Artikel gelesen hatte, konnte er mitreden",
+            "english": "After he had read the article, he could participate"
+          },
+          {
+            "german": "Sie verstand den Film, nachdem sie das Buch gelesen hatte",
+            "english": "She understood the movie, after she had read the book"
+          }
         ],
         "hints": [
           "Past perfect: hatte + past participle",
@@ -741,9 +1179,18 @@
       {
         "keyWords": ["falls", "regnen", "absagen"],
         "possibleAnswers": [
-          "Falls es regnet, sagen wir das Picknick ab",
-          "Wir sagen ab, falls es regnen sollte",
-          "Falls es stark regnet, müssen wir absagen"
+          {
+            "german": "Falls es regnet, sagen wir das Picknick ab",
+            "english": "If it rains, we will cancel the picnic"
+          },
+          {
+            "german": "Wir sagen ab, falls es regnen sollte",
+            "english": "We will cancel, if it should rain"
+          },
+          {
+            "german": "Falls es stark regnet, müssen wir absagen",
+            "english": "If it rains heavily, we must cancel"
+          }
         ],
         "hints": [
           "'falls' = in case, if",
@@ -756,9 +1203,18 @@
       {
         "keyWords": ["je", "mehr", "desto"],
         "possibleAnswers": [
-          "Je mehr ich lerne, desto besser verstehe ich es",
-          "Je öfter er übt, desto besser wird er",
-          "Je länger wir warten, desto später kommen wir an"
+          {
+            "german": "Je mehr ich lerne, desto besser verstehe ich es",
+            "english": "The more I learn, the better I understand it"
+          },
+          {
+            "german": "Je öfter er übt, desto besser wird er",
+            "english": "The more often he practices, the better he becomes"
+          },
+          {
+            "german": "Je länger wir warten, desto später kommen wir an",
+            "english": "The longer we wait, the later we arrive"
+          }
         ],
         "hints": [
           "'je...desto' = the more...the more",
@@ -771,9 +1227,18 @@
       {
         "keyWords": ["worden", "gebaut", "Jahrhundert"],
         "possibleAnswers": [
-          "Das Schloss ist im 18. Jahrhundert erbaut worden",
-          "Diese Kirche ist vor 500 Jahren gebaut worden",
-          "Die Brücke ist letztes Jahr renoviert worden"
+          {
+            "german": "Das Schloss ist im 18. Jahrhundert erbaut worden",
+            "english": "The castle was built in the 18th century"
+          },
+          {
+            "german": "Diese Kirche ist vor 500 Jahren gebaut worden",
+            "english": "This church was built 500 years ago"
+          },
+          {
+            "german": "Die Brücke ist letztes Jahr renoviert worden",
+            "english": "The bridge was renovated last year"
+          }
         ],
         "hints": [
           "Passive perfect: ist...worden",
@@ -786,9 +1251,18 @@
       {
         "keyWords": ["anstatt", "arbeiten", "entspannen"],
         "possibleAnswers": [
-          "Anstatt zu arbeiten, entspannt er sich",
-          "Sie entspannt sich, anstatt zu arbeiten",
-          "Anstatt hart zu arbeiten, macht er Pause"
+          {
+            "german": "Anstatt zu arbeiten, entspannt er sich",
+            "english": "Instead of working, he relaxes himself"
+          },
+          {
+            "german": "Sie entspannt sich, anstatt zu arbeiten",
+            "english": "She relaxes herself, instead of working"
+          },
+          {
+            "german": "Anstatt hart zu arbeiten, macht er Pause",
+            "english": "Instead of working hard, he takes a break"
+          }
         ],
         "hints": [
           "'anstatt' + zu + infinitive",
@@ -801,9 +1275,18 @@
       {
         "keyWords": ["sowohl", "als auch", "sprechen"],
         "possibleAnswers": [
-          "Er spricht sowohl Deutsch als auch Englisch",
-          "Sowohl die Studenten als auch die Lehrer sprechen darüber",
-          "Sie kann sowohl singen als auch tanzen"
+          {
+            "german": "Er spricht sowohl Deutsch als auch Englisch",
+            "english": "He speaks both German and English"
+          },
+          {
+            "german": "Sowohl die Studenten als auch die Lehrer sprechen darüber",
+            "english": "Both students and teachers talk about it"
+          },
+          {
+            "german": "Sie kann sowohl singen als auch tanzen",
+            "english": "She can both sing and dance"
+          }
         ],
         "hints": [
           "'sowohl...als auch' = both...and",
@@ -816,9 +1299,18 @@
       {
         "keyWords": ["wäre", "gewesen", "anders"],
         "possibleAnswers": [
-          "Wenn ich da gewesen wäre, wäre alles anders gewesen",
-          "Wäre er früher gekommen, wäre es anders gewesen",
-          "Das wäre anders gewesen, wenn du geholfen hättest"
+          {
+            "german": "Wenn ich da gewesen wäre, wäre alles anders gewesen",
+            "english": "If I had been there, everything would have been different"
+          },
+          {
+            "german": "Wäre er früher gekommen, wäre es anders gewesen",
+            "english": "If he had come earlier, it would have been different"
+          },
+          {
+            "german": "Das wäre anders gewesen, wenn du geholfen hättest",
+            "english": "That would have been different if you had helped"
+          }
         ],
         "hints": [
           "Subjunctive II past: wäre...gewesen",
@@ -831,9 +1323,18 @@
       {
         "keyWords": ["ohne", "wissen", "kaufen"],
         "possibleAnswers": [
-          "Ohne es zu wissen, kaufte er das falsche Buch",
-          "Er kaufte das Auto, ohne den Preis zu wissen",
-          "Ohne vorher zu fragen, kaufte sie das Kleid"
+          {
+            "german": "Ohne es zu wissen, kaufte er das falsche Buch",
+            "english": "Without knowing it, he bought the wrong book"
+          },
+          {
+            "german": "Er kaufte das Auto, ohne den Preis zu wissen",
+            "english": "He bought the car, without knowing the price"
+          },
+          {
+            "german": "Ohne vorher zu fragen, kaufte sie das Kleid",
+            "english": "Without asking beforehand, she bought the dress"
+          }
         ],
         "hints": [
           "'ohne...zu' = without doing",
@@ -846,9 +1347,18 @@
       {
         "keyWords": ["lassen", "reparieren", "Auto"],
         "possibleAnswers": [
-          "Ich lasse mein Auto reparieren",
-          "Er lässt das Auto in der Werkstatt reparieren",
-          "Wir haben das Auto reparieren lassen"
+          {
+            "german": "Ich lasse mein Auto reparieren",
+            "english": "I let my car be repaired"
+          },
+          {
+            "german": "Er lässt das Auto in der Werkstatt reparieren",
+            "english": "He lets the car be repaired at the garage"
+          },
+          {
+            "german": "Wir haben das Auto reparieren lassen",
+            "english": "We had the car repaired"
+          }
         ],
         "hints": [
           "'lassen' = to have something done",
@@ -861,9 +1371,18 @@
       {
         "keyWords": ["trotzdem", "Regen", "wandern"],
         "possibleAnswers": [
-          "Es regnet stark, trotzdem gehen wir wandern",
-          "Trotz des Regens gehen wir wandern",
-          "Der Regen ist stark, trotzdem wandern wir"
+          {
+            "german": "Es regnet stark, trotzdem gehen wir wandern",
+            "english": "Although it is raining heavily, we go hiking"
+          },
+          {
+            "german": "Trotz des Regens gehen wir wandern",
+            "english": "Despite the rain, we go hiking"
+          },
+          {
+            "german": "Der Regen ist stark, trotzdem wandern wir",
+            "english": "Although the rain is heavy, we go hiking"
+          }
         ],
         "hints": [
           "'trotzdem' = nevertheless",
@@ -876,9 +1395,18 @@
       {
         "keyWords": ["indem", "üben", "verbessern", "täglich"],
         "possibleAnswers": [
-          "Er verbessert sein Deutsch, indem er täglich übt",
-          "Indem wir viel lesen, verbessern wir unseren Wortschatz",
-          "Sie lernt Deutsch, indem sie deutsche Filme schaut"
+          {
+            "german": "Er verbessert sein Deutsch, indem er täglich übt",
+            "english": "He improves his German, by practicing daily"
+          },
+          {
+            "german": "Indem wir viel lesen, verbessern wir unseren Wortschatz",
+            "english": "By reading a lot, we improve our vocabulary"
+          },
+          {
+            "german": "Sie lernt Deutsch, indem sie deutsche Filme schaut",
+            "english": "She learns German, by watching German movies"
+          }
         ],
         "hints": [
           "'indem' = by doing something",
@@ -891,9 +1419,18 @@
       {
         "keyWords": ["insofern", "als", "betrachten"],
         "possibleAnswers": [
-          "Das Problem ist insofern komplex, als viele Faktoren eine Rolle spielen",
-          "Insofern, als wir es so betrachten, ist es richtig",
-          "Der Plan ist insofern gut, als er praktisch umsetzbar ist"
+          {
+            "german": "Das Problem ist insofern komplex, als viele Faktoren eine Rolle spielen",
+            "english": "The problem is insofar as complex, as many factors play a role"
+          },
+          {
+            "german": "Insofern, als wir es so betrachten, ist es richtig",
+            "english": "Insofar as we look at it, it is correct"
+          },
+          {
+            "german": "Der Plan ist insofern gut, als er praktisch umsetzbar ist",
+            "english": "The plan is insofar as good, as it is practically implementable"
+          }
         ],
         "hints": [
           "'insofern...als' = insofar as",
@@ -906,9 +1443,18 @@
       {
         "keyWords": ["zumal", "da", "verstehen"],
         "possibleAnswers": [
-          "Ich verstehe seine Reaktion, zumal er unter Stress steht",
-          "Das ist schwierig, zumal da niemand hilft",
-          "Zumal es spät ist, sollten wir gehen"
+          {
+            "german": "Ich verstehe seine Reaktion, zumal er unter Stress steht",
+            "english": "I understand his reaction, especially since he is under stress"
+          },
+          {
+            "german": "Das ist schwierig, zumal da niemand hilft",
+            "english": "It is difficult, especially since no one helps"
+          },
+          {
+            "german": "Zumal es spät ist, sollten wir gehen",
+            "english": "Especially since it is late, we should go"
+          }
         ],
         "hints": [
           "'zumal' = especially since",
@@ -921,9 +1467,18 @@
       {
         "keyWords": ["vorausgesetzt", "dass", "einverstanden"],
         "possibleAnswers": [
-          "Ich bin einverstanden, vorausgesetzt, dass alle zustimmen",
-          "Vorausgesetzt, dass das Wetter gut ist, fahren wir",
-          "Das funktioniert, vorausgesetzt, dass du mithilfst"
+          {
+            "german": "Ich bin einverstanden, vorausgesetzt, dass alle zustimmen",
+            "english": "I am in agreement, provided that everyone agrees"
+          },
+          {
+            "german": "Vorausgesetzt, dass das Wetter gut ist, fahren wir",
+            "english": "Provided that the weather is nice, we will go"
+          },
+          {
+            "german": "Das funktioniert, vorausgesetzt, dass du mithilfst",
+            "english": "It works, provided that you help"
+          }
         ],
         "hints": [
           "'vorausgesetzt, dass' = provided that",
@@ -936,9 +1491,18 @@
       {
         "keyWords": ["geschweige", "denn", "verstehen"],
         "possibleAnswers": [
-          "Er kann nicht lesen, geschweige denn schreiben",
-          "Ich verstehe es nicht, geschweige denn, dass ich es erklären könnte",
-          "Sie spricht kein Deutsch, geschweige denn Französisch"
+          {
+            "german": "Er kann nicht lesen, geschweige denn schreiben",
+            "english": "He cannot read, let alone write"
+          },
+          {
+            "german": "Ich verstehe es nicht, geschweige denn, dass ich es erklären könnte",
+            "english": "I do not understand it, let alone that I could explain it"
+          },
+          {
+            "german": "Sie spricht kein Deutsch, geschweige denn Französisch",
+            "english": "She does not speak German, let alone French"
+          }
         ],
         "hints": [
           "'geschweige denn' = let alone",
@@ -951,9 +1515,18 @@
       {
         "keyWords": ["ungeachtet", "dessen", "fortfahren"],
         "possibleAnswers": [
-          "Ungeachtet der Schwierigkeiten fahren wir fort",
-          "Ungeachtet dessen, was passiert ist, machen wir weiter",
-          "Ungeachtet aller Kritik setzt er sein Projekt fort"
+          {
+            "german": "Ungeachtet der Schwierigkeiten fahren wir fort",
+            "english": "Regardless of the difficulties, we continue"
+          },
+          {
+            "german": "Ungeachtet dessen, was passiert ist, machen wir weiter",
+            "english": "Regardless of what happened, we continue"
+          },
+          {
+            "german": "Ungeachtet aller Kritik setzt er sein Projekt fort",
+            "english": "Regardless of all criticism, he continues his project"
+          }
         ],
         "hints": [
           "'ungeachtet' = regardless of",
@@ -966,9 +1539,18 @@
       {
         "keyWords": ["dergestalt", "dass", "beeindrucken"],
         "possibleAnswers": [
-          "Seine Leistung war dergestalt, dass alle beeindruckt waren",
-          "Die Situation entwickelte sich dergestalt, dass wir handeln mussten",
-          "Er sprach dergestalt, dass niemand widersprach"
+          {
+            "german": "Seine Leistung war dergestalt, dass alle beeindruckt waren",
+            "english": "His performance was such that everyone was impressed"
+          },
+          {
+            "german": "Die Situation entwickelte sich dergestalt, dass wir handeln mussten",
+            "english": "The situation developed in such a way that we had to act"
+          },
+          {
+            "german": "Er sprach dergestalt, dass niemand widersprach",
+            "english": "He spoke in such a way that no one contradicted him"
+          }
         ],
         "hints": [
           "'dergestalt, dass' = in such a way that",
@@ -981,9 +1563,18 @@
       {
         "keyWords": ["sofern", "nicht", "ändern"],
         "possibleAnswers": [
-          "Sofern sich nichts ändert, treffen wir uns morgen",
-          "Sofern du nicht kommst, fangen wir ohne dich an",
-          "Das bleibt so, sofern niemand Einspruch erhebt"
+          {
+            "german": "Sofern sich nichts ändert, treffen wir uns morgen",
+            "english": "If nothing changes, we will meet tomorrow"
+          },
+          {
+            "german": "Sofern du nicht kommst, fangen wir ohne dich an",
+            "english": "If you do not come, we will start without you"
+          },
+          {
+            "german": "Das bleibt so, sofern niemand Einspruch erhebt",
+            "english": "It remains so, provided that no one objects"
+          }
         ],
         "hints": [
           "'sofern' = unless/provided that",
@@ -996,9 +1587,18 @@
       {
         "keyWords": ["mittels", "dessen", "erreichen"],
         "possibleAnswers": [
-          "Mittels dieser Methode erreichen wir das Ziel",
-          "Mittels dessen, was wir gelernt haben, lösen wir das Problem",
-          "Mittels moderner Technologie erreichen wir bessere Ergebnisse"
+          {
+            "german": "Mittels dieser Methode erreichen wir das Ziel",
+            "english": "By means of this method, we achieve our goal"
+          },
+          {
+            "german": "Mittels dessen, was wir gelernt haben, lösen wir das Problem",
+            "english": "By means of what we have learned, we solve the problem"
+          },
+          {
+            "german": "Mittels moderner Technologie erreichen wir bessere Ergebnisse",
+            "english": "By means of modern technology, we achieve better results"
+          }
         ],
         "hints": [
           "'mittels' = by means of",
@@ -1011,9 +1611,18 @@
       {
         "keyWords": ["abgesehen", "davon", "dass"],
         "possibleAnswers": [
-          "Abgesehen davon, dass es teuer ist, gefällt es mir",
-          "Abgesehen davon, dass er spät kam, war alles gut",
-          "Das Projekt ist gut, abgesehen davon, dass es zu lange dauert"
+          {
+            "german": "Abgesehen davon, dass es teuer ist, gefällt es mir",
+            "english": "Apart from the fact that it is expensive, I like it"
+          },
+          {
+            "german": "Abgesehen davon, dass er spät kam, war alles gut",
+            "english": "Apart from the fact that he came late, everything was fine"
+          },
+          {
+            "german": "Das Projekt ist gut, abgesehen davon, dass es zu lange dauert",
+            "english": "The project is good, apart from the fact that it takes too long"
+          }
         ],
         "hints": [
           "'abgesehen davon, dass' = apart from the fact that",
@@ -1026,9 +1635,18 @@
       {
         "keyWords": ["wohingegen", "andere", "bevorzugen"],
         "possibleAnswers": [
-          "Ich bevorzuge klassische Musik, wohingegen andere Jazz mögen",
-          "Wohingegen die einen früh aufstehen, schlafen andere lange",
-          "Er arbeitet hart, wohingegen sein Bruder faul ist"
+          {
+            "german": "Ich bevorzuge klassische Musik, wohingegen andere Jazz mögen",
+            "english": "I prefer classical music, whereas others like jazz"
+          },
+          {
+            "german": "Wohingegen die einen früh aufstehen, schlafen andere lange",
+            "english": "Whereas some get up early, others sleep a lot"
+          },
+          {
+            "german": "Er arbeitet hart, wohingegen sein Bruder faul ist",
+            "english": "He works hard, whereas his brother is lazy"
+          }
         ],
         "hints": [
           "'wohingegen' = whereas",
@@ -1041,9 +1659,18 @@
       {
         "keyWords": ["gleichwohl", "dennoch", "versuchen"],
         "possibleAnswers": [
-          "Es ist schwierig, gleichwohl versuche ich es",
-          "Gleichwohl er müde war, arbeitete er weiter",
-          "Die Chancen sind gering, dennoch versuchen wir es"
+          {
+            "german": "Es ist schwierig, gleichwohl versuche ich es",
+            "english": "It is difficult, nevertheless I try"
+          },
+          {
+            "german": "Gleichwohl er müde war, arbeitete er weiter",
+            "english": "Nevertheless, although he was tired, he continued working"
+          },
+          {
+            "german": "Die Chancen sind gering, dennoch versuchen wir es",
+            "english": "The chances are slim, nevertheless we try"
+          }
         ],
         "hints": [
           "'gleichwohl' = nevertheless",
@@ -1056,9 +1683,18 @@
       {
         "keyWords": ["umso", "mehr", "schätzen"],
         "possibleAnswers": [
-          "Umso mehr schätze ich seine Hilfe",
-          "Je schwieriger es wird, umso mehr schätzen wir die Unterstützung",
-          "Umso mehr Grund haben wir, dankbar zu sein"
+          {
+            "german": "Umso mehr schätze ich seine Hilfe",
+            "english": "The more I appreciate his help"
+          },
+          {
+            "german": "Je schwieriger es wird, umso mehr schätzen wir die Unterstützung",
+            "english": "The more difficult it gets, the more we appreciate the support"
+          },
+          {
+            "german": "Umso mehr Grund haben wir, dankbar zu sein",
+            "english": "The more reasons we have to be grateful"
+          }
         ],
         "hints": [
           "'umso mehr' = all the more",

@@ -128,48 +128,7 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
     }
 
     // If no exact match, try lowercase (for words like Ich, Das, etc.)
-    if (germanToEnglishDictionary[cleanWord.toLowerCase()]) {
-      return germanToEnglishDictionary[cleanWord.toLowerCase()];
-    }
-
-    // Smart declension handling: try removing common German endings to find root forms
-    const tryRootForms = (word: string): string | null => {
-      const lowerWord = word.toLowerCase();
-      
-      // Common adjective endings to try removing
-      const adjectiveEndings = ['e', 'en', 'er', 'es', 'em'];
-      
-      for (const ending of adjectiveEndings) {
-        if (lowerWord.endsWith(ending) && lowerWord.length > ending.length + 2) {
-          const rootForm = lowerWord.slice(0, -ending.length);
-          if (germanToEnglishDictionary[rootForm]) {
-            return germanToEnglishDictionary[rootForm];
-          }
-        }
-      }
-      
-      // Try removing common noun endings for plurals and cases
-      const nounEndings = ['n', 's', 'en', 'er', 'ern'];
-      
-      for (const ending of nounEndings) {
-        if (lowerWord.endsWith(ending) && lowerWord.length > ending.length + 2) {
-          const rootForm = lowerWord.slice(0, -ending.length);
-          if (germanToEnglishDictionary[rootForm]) {
-            return germanToEnglishDictionary[rootForm];
-          }
-        }
-      }
-      
-      return null;
-    };
-
-    // Try to find root form
-    const rootTranslation = tryRootForms(cleanWord);
-    if (rootTranslation) {
-      return rootTranslation;
-    }
-
-    return 'translation not found';
+    return germanToEnglishDictionary[cleanWord.toLowerCase()] || 'translation not found';
   };
 
   const handleRetry = () => {
@@ -179,17 +138,20 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
 
   // Get the best matching target answer for real-time validation
   const getBestMatch = (input: string) => {
-    if (!input.trim()) return currentChallenge.possibleAnswers[0];
+    const firstAnswer = currentChallenge.possibleAnswers[0];
+    if (!input.trim()) {
+      return firstAnswer.german;
+    }
 
     // Find the answer that matches the most characters from the beginning
-    let bestMatch = currentChallenge.possibleAnswers[0];
+    let bestMatch = firstAnswer.german;
     let maxMatchLength = 0;
 
     for (const answer of currentChallenge.possibleAnswers) {
-      const matchLength = getMatchLength(input.toLowerCase(), answer.toLowerCase());
+      const matchLength = getMatchLength(input.toLowerCase(), answer.german.toLowerCase());
       if (matchLength > maxMatchLength) {
         maxMatchLength = matchLength;
-        bestMatch = answer;
+        bestMatch = answer.german;
       }
     }
 
@@ -207,6 +169,19 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
       }
     }
     return matchLength;
+  };
+
+  // Translate a complete German sentence to English using the JSON data
+  const translateSentence = (germanSentence: string): string => {
+    // Find the matching answer in the current challenge
+    for (const answer of currentChallenge.possibleAnswers) {
+      if (answer.german === germanSentence) {
+        return answer.english;
+      }
+    }
+    
+    // If no exact match found, return a default message
+    return "Translation not available";
   };
 
   // Render the input with real-time validation styling
@@ -360,8 +335,11 @@ export const SentenceBuilderMode: React.FC<SentenceBuilderModeProps> = ({
           </div>
 
           {isFinished && (
-            <div className="absolute bottom-0 left-0 right-0 bg-green-50 border-2 border-green-400 rounded flex items-center justify-center p-4">
-              <span className="text-green-700 font-bold">Perfect! ✓</span>
+            <div className="absolute bottom-0 left-0 right-0 bg-green-50 border-2 border-green-400 rounded flex flex-col items-center justify-center p-4">
+              <span className="text-green-700 font-bold mb-2">✓ Complete!</span>
+              <span className="text-green-600 text-lg font-medium">
+                {translateSentence(userInput)}
+              </span>
             </div>
           )}
 

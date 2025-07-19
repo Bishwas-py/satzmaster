@@ -10,7 +10,10 @@ export interface GermanText {
 
 export interface SentenceBuilderChallenge {
   keyWords: string[];
-  possibleAnswers: string[];
+  possibleAnswers: {
+    german: string;
+    english: string;
+  }[];
   hints: string[];
   pattern: string;
   explanation: string;
