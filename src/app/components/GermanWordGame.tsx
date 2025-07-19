@@ -41,7 +41,7 @@ export const GermanWordGame = () => {
   const [completionTimeoutId, setCompletionTimeoutId] = useState<NodeJS.Timeout | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { wpm, accuracy } = useGameStats(userInput, activeTypingTime, errors);
+  const { wpm, accuracy } = useGameStats(userInput, startTime, errors);
 
   // Initialize shuffled content when difficulty or mode changes
   useEffect(() => {
@@ -197,6 +197,7 @@ export const GermanWordGame = () => {
             setIsFinished(false);
             setErrors(0);
             // Reset timing for next sentence
+            setStartTime(Date.now());
             setActiveTypingTime(0);
             setLastTypingTime(Date.now());
             // Improved auto-focus with longer timeout
@@ -217,13 +218,14 @@ export const GermanWordGame = () => {
       clearTimeout(completionTimeoutId);
       setCompletionTimeoutId(null);
     }
-
+    
     if (getNextChallenge()) {
       setUserInput('');
       setIsFinished(false);
       setIsCorrect(null);
       setShowHints(false);
       // Reset timing for next challenge
+      setStartTime(Date.now());
       setActiveTypingTime(0);
       setLastTypingTime(Date.now());
       // Auto-focus the input for the next challenge
@@ -284,6 +286,7 @@ export const GermanWordGame = () => {
     setIsCorrect(null);
     setShowHints(false);
     // Reset timing
+    setStartTime(Date.now());
     setActiveTypingTime(0);
     setLastTypingTime(Date.now());
     setTimeout(() => inputRef.current?.focus(), 100);
